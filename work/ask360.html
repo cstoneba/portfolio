@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ask360: AI Support Assistant | Casey Stoneback</title>
-<link rel="stylesheet" href="../css/style.css?v=10">
+<link rel="stylesheet" href="../css/style.css?v=11">
 </head>
 <body>
 
@@ -26,9 +26,9 @@
     <p class="summary">Requirements, conversation design, and research for the AI assistant built into Fiserv's client support portal, turning a search-then-retype support journey into a single conversation.</p>
     <div class="tag-row">
       <span class="tag">Conversation design</span>
+      <span class="tag">Visual design</span>
       <span class="tag">Requirements</span>
-      <span class="tag">Research</span>
-      <span class="tag">Stakeholder alignment</span>
+      <span class="tag">Usability testing</span>
     </div>
     <dl class="cs-meta">
       <div>
@@ -45,7 +45,7 @@
       </div>
       <div>
         <dt>Partners</dt>
-        <dd>Engineering, design, knowledge platform</dd>
+        <dd>Engineering, knowledge platform, client users</dd>
       </div>
     </dl>
   </div>
@@ -68,7 +68,7 @@
   <div class="wrap">
     <p class="num">02</p>
     <h2>My role</h2>
-    <p>I write the product requirements and user stories that translate what the assistant needs to do into something engineering, design, and the knowledge-platform team can actually build against and test. That includes the boundaries around what data the assistant is allowed to touch, not just what it should say.</p>
+    <p>I own both the requirements and the design on this one. I write the user stories and acceptance criteria that engineering and the knowledge-platform team build against, including the boundaries around what data the assistant is allowed to touch. I also did the visual design and built the working prototype, using Figma Make and GitHub Copilot.</p>
   </div>
 </section>
 
@@ -89,11 +89,16 @@
 
     <div class="cs-block">
       <h3>Mapping the conversation</h3>
-      <p>I partnered with engineering, design, and the knowledge-platform team to document 40+ conversational use cases for the portal, and, for each one, the edge cases: what happens when the assistant doesn't have enough data to answer, when a client asks something out of scope, and when the documentation can't resolve it and the client needs to open an inquiry instead. I wrote the acceptance criteria for each so engineering had a clear definition of "done" and QA had something concrete to test against.</p>
+      <p>I worked with engineering and the knowledge-platform team to document 40+ conversational use cases for the portal, and, for each one, the edge cases: what happens when the assistant doesn't have enough data to answer, when a client asks something out of scope, and when the documentation can't resolve it and the client needs to open an inquiry instead. I wrote the acceptance criteria for each so engineering had a clear definition of "done" and QA had something concrete to test against.</p>
       <div class="media-placeholder">
         <span class="tag">Add screenshot</span><br>
         Example use case / acceptance criteria doc, or the assistant handling an edge case
       </div>
+    </div>
+
+    <div class="cs-block">
+      <h3>Designing it, not just specifying it</h3>
+      <p>I did the visual design for the assistant and built it into a working prototype with Figma Make and GitHub Copilot, instead of handing over static screens. Something clickable meant the flows could be judged as an actual experience: typing a real question, reading what came back, deciding whether the answer was enough or an inquiry was still needed.</p>
     </div>
 
     <div class="cs-block">
@@ -102,8 +107,8 @@
     </div>
 
     <div class="cs-block">
-      <h3>Testing it against real clients</h3>
-      <p>I led B2B user research directly with financial-institution clients, running one-on-one interviews plus a recurring monthly user group, to check whether the assistant's answers, and the handoff into creating an inquiry, actually matched how clients described problems in practice, not just how we assumed they would.</p>
+      <h3>Testing it before it existed</h3>
+      <p>I ran Wizard of Oz sessions with 10 client users, playing the assistant myself behind the prototype so people could work through real problems before any of the model behaviour was built. Where someone got stuck, described a problem in words the flows didn't anticipate, or expected an action the assistant never offered, I changed the flows and the copy between sessions. A recurring monthly user group kept that feedback coming after the sessions ended.</p>
     </div>
   </div>
 </section>
@@ -112,7 +117,7 @@
   <div class="wrap">
     <p class="num">04</p>
     <h2>Collaboration &amp; stakeholders</h2>
-    <p>This only works if the same set of requirements makes sense to three different audiences at once: engineering needs to know exactly what's buildable and where the data boundaries are, the knowledge-platform team needs to know what content gaps to fill so the assistant has something accurate to draw from, and design needs the constraints on what the assistant can safely say before it designs the conversation itself. Keeping requirements consistent across those three groups, and re-aligning them every time research surfaced a new edge case, was most of the day-to-day work.</p>
+    <p>This only works if the same set of requirements makes sense to several audiences at once: engineering needs to know exactly what's buildable and where the data boundaries are, the knowledge-platform team needs to know which content gaps to fill so the assistant has something accurate to draw from, and the teams that own account and permissions data need to agree on precisely what can be exposed and to whom. Keeping requirements consistent across those groups, and re-aligning them every time testing surfaced a new edge case, was most of the day-to-day work.</p>
     <div class="media-placeholder">
       <span class="tag">Add detail</span><br>
       A specific example of a stakeholder disagreement (e.g. data exposure vs. answer completeness) and how it was resolved
@@ -130,6 +135,10 @@
         <span class="label">conversational use cases documented with acceptance criteria</span>
       </div>
       <div class="stat">
+        <span class="num-big">10</span>
+        <span class="label">client users in Wizard of Oz testing</span>
+      </div>
+      <div class="stat">
         <span class="num-big">15%</span>
         <span class="label">reduction in mean time to resolution and average handle time</span>
       </div>
@@ -142,7 +151,7 @@
   <div class="wrap">
     <p class="num">06</p>
     <h2>Prototype</h2>
-    <p>A working front-end prototype of the support portal and assistant flow: landing dashboard, AI chat, recommended resolution, related knowledge articles, and creating an inquiry with the conversation context carried over.</p>
+    <p>The prototype I designed and built, covering the support portal and assistant flow: landing dashboard, AI chat, recommended resolution, related knowledge articles, and creating an inquiry with the conversation context carried over.</p>
     <div class="btn-row">
       <a class="btn" href="prototypes/ask360-portal.html" target="_blank" rel="noopener">Open interactive prototype &rarr;</a>
     </div>
