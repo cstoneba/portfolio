@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ask360: AI Support Assistant | Casey Stoneback</title>
-<link rel="stylesheet" href="../css/style.css?v=7">
+<link rel="stylesheet" href="../css/style.css?v=8">
 </head>
 <body>
 
@@ -23,7 +23,7 @@
   <div class="wrap">
     <a class="back-link" href="../index.html#work">&larr; All work</a>
     <h1>Ask360: AI Support Assistant</h1>
-    <p class="summary">Requirements, security constraints, and research for the AI assistant built into Fiserv's B2B client support portal. It is the tool financial-institution clients use to get help instead of opening a ticket.</p>
+    <p class="summary">Requirements, conversation design, and research for the AI assistant built into Fiserv's client support portal, turning a search-then-retype support journey into a single conversation.</p>
     <div class="tag-row">
       <span class="tag">Research</span>
       <span class="tag">Requirements</span>
@@ -54,7 +54,8 @@
   <div class="wrap">
     <p class="num">01</p>
     <h2>Context</h2>
-    <p>Fiserv's client support portal is how B2B financial-institution clients get help: checking on an inquiry, finding documentation, reaching a rep. Ask360 is the AI assistant layered into that portal: instead of only searching the knowledge base or filing a ticket, a client can ask a question directly and get an answer sourced from their own account and case data, with an option to escalate to a support ticket or a live rep if the assistant can't resolve it.</p>
+    <p>Fiserv's client support portal is where financial-institution clients go when something isn't working. Getting to an answer was the problem. Knowledge articles and product documentation were hard to surface through search, and what did surface wasn't always current. When search failed, the client opened an inquiry and retyped the whole situation from scratch.</p>
+    <p>Ask360 is built to close that gap and make self-service actually work. A client describes the problem in their own words, gets relevant documentation back to troubleshoot with, and if that doesn't resolve it, opens an inquiry from inside the same conversation with the context already attached. One journey instead of three.</p>
     <div class="media-placeholder">
       <span class="tag">Add screenshot</span><br>
       Portal landing screen: sidebar navigation, inquiries dashboard, AI assistant launcher
@@ -82,7 +83,7 @@
 
     <div class="cs-block">
       <h3>Mapping the conversation</h3>
-      <p>I partnered with engineering, design, and the knowledge-platform team to document 40+ conversational use cases for the portal, and, for each one, the edge cases: what happens when the assistant doesn't have enough data to answer, when a client asks something out of scope, when it needs to hand off to a live rep. I wrote the acceptance criteria for each so engineering had a clear definition of "done" and QA had something concrete to test against.</p>
+      <p>I partnered with engineering, design, and the knowledge-platform team to document 40+ conversational use cases for the portal, and, for each one, the edge cases: what happens when the assistant doesn't have enough data to answer, when a client asks something out of scope, and when the documentation can't resolve it and the client needs to open an inquiry instead. I wrote the acceptance criteria for each so engineering had a clear definition of "done" and QA had something concrete to test against.</p>
       <div class="media-placeholder">
         <span class="tag">Add screenshot</span><br>
         Example use case / acceptance criteria doc, or the assistant handling an edge case
@@ -91,7 +92,7 @@
 
     <div class="cs-block">
       <h3>Testing it against real clients</h3>
-      <p>I led B2B user research directly with financial-institution clients, running one-on-one interviews plus a recurring monthly user group, to check whether the assistant's answers and escalation paths actually matched how clients asked for help in practice, not just how we assumed they would.</p>
+      <p>I led B2B user research directly with financial-institution clients, running one-on-one interviews plus a recurring monthly user group, to check whether the assistant's answers, and the handoff into creating an inquiry, actually matched how clients described problems in practice, not just how we assumed they would.</p>
     </div>
   </div>
 </section>
@@ -130,7 +131,7 @@
   <div class="wrap">
     <p class="num">06</p>
     <h2>Prototype</h2>
-    <p>A working front-end prototype of the support portal and assistant flow: landing dashboard, AI chat, recommended resolution, related knowledge articles, and escalation to a support ticket.</p>
+    <p>A working front-end prototype of the support portal and assistant flow: landing dashboard, AI chat, recommended resolution, related knowledge articles, and creating an inquiry with the conversation context carried over.</p>
     <div class="btn-row">
       <a class="btn" href="prototypes/ask360-portal.html" target="_blank" rel="noopener">Open interactive prototype &rarr;</a>
     </div>
