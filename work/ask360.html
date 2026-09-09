@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ask360: AI Support Assistant | Casey Stoneback</title>
-<link rel="stylesheet" href="../css/style.css?v=8">
+<link rel="stylesheet" href="../css/style.css?v=9">
 </head>
 <body>
 
@@ -25,8 +25,9 @@
     <h1>Ask360: AI Support Assistant</h1>
     <p class="summary">Requirements, conversation design, and research for the AI assistant built into Fiserv's client support portal, turning a search-then-retype support journey into a single conversation.</p>
     <div class="tag-row">
-      <span class="tag">Research</span>
+      <span class="tag">Conversation design</span>
       <span class="tag">Requirements</span>
+      <span class="tag">Research</span>
       <span class="tag">Stakeholder alignment</span>
     </div>
     <dl class="cs-meta">
@@ -55,7 +56,7 @@
     <p class="num">01</p>
     <h2>Context</h2>
     <p>Fiserv's client support portal is where financial-institution clients go when something isn't working. Getting to an answer was the problem. Knowledge articles and product documentation were hard to surface through search, and what did surface wasn't always current. When search failed, the client opened an inquiry and retyped the whole situation from scratch.</p>
-    <p>Ask360 is built to close that gap and make self-service actually work. A client describes the problem in their own words, gets relevant documentation back to troubleshoot with, and if that doesn't resolve it, opens an inquiry from inside the same conversation with the context already attached. One journey instead of three.</p>
+    <p>Ask360 is built to close that gap and make self-service actually work. A client describes the problem in their own words, gets documentation back for the products they actually license, and if that doesn't resolve it, opens an inquiry from inside the same conversation with the context already attached. One journey instead of three.</p>
     <div class="media-placeholder">
       <span class="tag">Add screenshot</span><br>
       Portal landing screen: sidebar navigation, inquiries dashboard, AI assistant launcher
@@ -77,8 +78,13 @@
     <h2>Process</h2>
 
     <div class="cs-block">
-      <h3>Defining what the assistant is allowed to know</h3>
-      <p>Before the assistant could answer anything accurately, we had to define exactly which account and case fields it was allowed to surface. It needed to be enough to give a real answer, without exposing more than a client should see through an AI interface. That constraint shaped the requirements before any conversation design happened.</p>
+      <h3>Making the answer specific to the client</h3>
+      <p>A generic answer pulled from generic documentation is exactly what the old search already did badly. So the assistant needed to know which products a client actually licenses, alongside their account and case data, and answer against that instead of describing features they don't own. Defining which of those fields it could surface, and how much of each, shaped the requirements before any conversation design started.</p>
+    </div>
+
+    <div class="cs-block">
+      <h3>Respecting what each user is allowed to do</h3>
+      <p>Permissions vary between users inside the same client organization. Some can create inquiries, some can view projects or invoices, some can't. The assistant reads those permissions and adapts to them: it won't offer to open an inquiry for someone who has no rights to create one, and it won't reference an invoice that person can't see. Writing that as acceptance criteria meant enumerating the permission combinations and defining what the assistant should say in each.</p>
     </div>
 
     <div class="cs-block">
@@ -88,6 +94,11 @@
         <span class="tag">Add screenshot</span><br>
         Example use case / acceptance criteria doc, or the assistant handling an edge case
       </div>
+    </div>
+
+    <div class="cs-block">
+      <h3>Designing for whatever screen it opens on</h3>
+      <p>Clients open the portal from a desk and from a phone between meetings, so the assistant is adaptive rather than desktop-only. The same conversation, documentation, and inquiry flow had to hold up at desktop, tablet, and mobile widths, which meant specifying how the chat panel, the returned articles, and the inquiry form reflow instead of assuming full-width layout.</p>
     </div>
 
     <div class="cs-block">
