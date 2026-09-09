@@ -59,45 +59,75 @@ a:hover { color: var(--accent); text-decoration-color: var(--accent); }
 }
 
 .site-nav .brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 19px;
+  font-size: 17px;
   text-decoration: none;
 }
 
 .site-nav .brand .mark {
-  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--bg);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
 }
 
 .site-nav .links {
   display: flex;
-  gap: 28px;
+  gap: 4px;
   align-items: center;
-  font-size: 15px;
+  font-size: 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 4px;
+  background: var(--bg-raised);
 }
 
 .site-nav .links a {
   text-decoration: none;
   color: var(--ink-muted);
+  padding: 7px 16px;
+  border-radius: 999px;
+  transition: background 0.15s ease, color 0.15s ease;
 }
 
-.site-nav .links a:hover { color: var(--accent); }
+.site-nav .links a:hover { color: var(--ink); background: var(--bg); }
 
 .site-nav .links a.resume {
-  border: 1px solid var(--ink);
-  border-radius: 4px;
-  padding: 7px 14px;
-  color: var(--ink);
+  background: var(--ink);
+  color: var(--bg);
 }
 
 .site-nav .links a.resume:hover {
-  border-color: var(--accent);
-  color: var(--accent);
+  background: var(--accent);
+  color: #fff;
 }
 
 /* Hero */
 .hero {
-  padding: 72px 0 56px;
+  padding: 64px 0 48px;
+}
+
+.hero .wrap {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.hero .hero-copy {
+  max-width: 620px;
 }
 
 .hero .eyebrow {
@@ -123,18 +153,49 @@ a:hover { color: var(--accent); text-decoration-color: var(--accent); }
 
 .hero h1 {
   font-family: var(--font-display);
-  font-weight: 500;
-  font-size: clamp(34px, 5vw, 48px);
-  line-height: 1.15;
+  font-weight: 400;
+  font-size: clamp(32px, 4.6vw, 44px);
+  line-height: 1.2;
   margin: 0 0 20px;
-  max-width: 15ch;
+}
+
+.hero h1 strong {
+  font-weight: 700;
+}
+
+.hero h1 .accent-text {
+  color: var(--accent);
+  font-weight: 700;
 }
 
 .hero p.lede {
-  font-size: 19px;
+  font-size: 18px;
   color: var(--ink-muted);
   max-width: 46ch;
-  margin: 0;
+  margin: 0 0 20px;
+}
+
+.hero .credibility {
+  font-size: 13px;
+  color: var(--ink-faint);
+  letter-spacing: 0.02em;
+}
+
+.hero .credibility strong {
+  color: var(--ink-muted);
+  font-weight: 600;
+}
+
+.hero-illustration {
+  flex-shrink: 0;
+  width: 200px;
+  height: 200px;
+  margin-top: 8px;
+}
+
+@media (max-width: 760px) {
+  .hero .wrap { flex-direction: column; }
+  .hero-illustration { display: none; }
 }
 
 /* How I work strip */
@@ -215,7 +276,6 @@ a:hover { color: var(--accent); text-decoration-color: var(--accent); }
 }
 
 .work-card {
-  display: block;
   text-decoration: none;
   color: var(--ink);
   border-top: 1px solid var(--line);
@@ -223,7 +283,7 @@ a:hover { color: var(--accent); text-decoration-color: var(--accent); }
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 16px;
-  align-items: baseline;
+  align-items: start;
 }
 
 .work-card:first-of-type { border-top: 1px solid var(--line); }
@@ -235,6 +295,22 @@ a:hover { color: var(--accent); text-decoration-color: var(--accent); }
   text-transform: uppercase;
   letter-spacing: 0.04em;
   margin-bottom: 6px;
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.tag {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
 }
 
 .work-card .meta::before {
@@ -337,6 +413,10 @@ a:hover { color: var(--accent); text-decoration-color: var(--accent); }
   font-size: 18px;
   color: var(--ink-muted);
   max-width: 56ch;
+  margin: 0 0 20px;
+}
+
+.cs-header .tag-row {
   margin: 0 0 32px;
 }
 
