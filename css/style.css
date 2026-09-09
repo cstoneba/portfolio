@@ -119,17 +119,6 @@ a:hover { color: var(--accent); text-decoration-color: var(--accent); }
   padding: 64px 0 48px;
 }
 
-.hero .wrap {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 32px;
-}
-
-.hero .hero-copy {
-  max-width: 620px;
-}
-
 .hero .eyebrow {
   font-family: var(--font-mono);
   font-size: 13px;
@@ -157,6 +146,7 @@ a:hover { color: var(--accent); text-decoration-color: var(--accent); }
   font-size: clamp(32px, 4.6vw, 44px);
   line-height: 1.2;
   margin: 0 0 20px;
+  max-width: 18ch;
 }
 
 .hero h1 strong {
@@ -184,18 +174,6 @@ a:hover { color: var(--accent); text-decoration-color: var(--accent); }
 .hero .credibility strong {
   color: var(--ink-muted);
   font-weight: 600;
-}
-
-.hero-illustration {
-  flex-shrink: 0;
-  width: 200px;
-  height: 200px;
-  margin-top: 8px;
-}
-
-@media (max-width: 760px) {
-  .hero .wrap { flex-direction: column; }
-  .hero-illustration { display: none; }
 }
 
 /* How I work strip */
