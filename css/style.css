@@ -8,44 +8,46 @@
 }
 
 @font-face {
-  font-family: 'DM Sans';
-  src: url('../assets/fonts/dm-sans.woff2') format('woff2-variations');
-  font-weight: 100 1000;
+  font-family: 'Rubik';
+  src: url('../assets/fonts/rubik.woff2') format('woff2-variations');
+  font-weight: 300 700;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'DM Sans';
-  src: url('../assets/fonts/dm-sans-italic.woff2') format('woff2-variations');
-  font-weight: 100 1000;
+  font-family: 'Rubik';
+  src: url('../assets/fonts/rubik-italic.woff2') format('woff2-variations');
+  font-weight: 300 700;
   font-style: italic;
   font-display: swap;
 }
 
 :root {
-  --bg: #fdfbf9;
+  /* Neutrals are tinted toward the green so the dark never reads as cold
+     black fighting the accent. */
+  --bg: #fcfbf6;
   --bg-raised: #ffffff;
-  --ink: #1c1a19;
-  --ink-muted: #5c5754;
-  --ink-faint: #928c87;
-  --line: #ebe6e1;
+  --ink: #17231c;
+  --ink-muted: #4f5c53;
+  --ink-faint: #8a958d;
+  --line: #e6e5db;
 
-  --accent: #5b4be8;
-  --accent-dark: #4536c9;
-  --accent-soft: #edeafd;
+  /* Bright green is a fill colour, always paired with ink text, never white. */
+  --green: #4fd68a;
+  --green-deep: #147a4b;
+  --green-soft: #dff4e7;
 
-  --blush: #fce7e4;
-  --lavender: #ebe7fc;
-  --mint: #ddf2e8;
-  --butter: #fcefd3;
+  --mint: #ddf3e5;
+  --butter: #faeed2;
+  --peach: #fbe5da;
 
   --max-width: 900px;
   --font-display: 'Bricolage Grotesque', 'Trebuchet MS', sans-serif;
-  --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Rubik', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-/* One palette, on purpose — no auto dark mode. */
+/* One palette, on purpose: no auto dark mode. */
 html { color-scheme: light; }
 
 * { box-sizing: border-box; }
@@ -63,7 +65,7 @@ body {
 img { max-width: 100%; }
 
 a { color: var(--ink); text-decoration-color: var(--ink-faint); }
-a:hover { color: var(--accent); text-decoration-color: var(--accent); }
+a:hover { color: var(--green-deep); text-decoration-color: var(--green-deep); }
 
 h1, h2, h3 { font-family: var(--font-display); }
 
@@ -103,8 +105,8 @@ h1, h2, h3 { font-family: var(--font-display); }
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  background: var(--accent);
-  color: #fff;
+  background: var(--green);
+  color: var(--ink);
   font-size: 12px;
   font-weight: 700;
   flex-shrink: 0;
@@ -133,7 +135,7 @@ h1, h2, h3 { font-family: var(--font-display); }
   transition: background 0.15s ease, color 0.15s ease;
 }
 
-.site-nav .links a:hover { color: var(--ink); background: var(--accent-soft); }
+.site-nav .links a:hover { color: var(--ink); background: var(--green-soft); }
 
 .site-nav .links a.resume {
   background: var(--ink);
@@ -141,7 +143,7 @@ h1, h2, h3 { font-family: var(--font-display); }
   font-weight: 600;
 }
 
-.site-nav .links a.resume:hover { background: var(--accent); color: #fff; }
+.site-nav .links a.resume:hover { background: var(--green); color: var(--ink); }
 
 /* Buttons */
 .btn {
@@ -165,16 +167,16 @@ h1, h2, h3 { font-family: var(--font-display); }
 }
 
 .btn-primary {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #fff;
+  background: var(--green);
+  border-color: var(--ink);
+  color: var(--ink);
 }
 
 .btn-primary:hover {
-  background: var(--accent-dark);
-  border-color: var(--accent-dark);
-  color: #fff;
-  box-shadow: 0 6px 0 -1px rgba(91, 75, 232, 0.28);
+  background: #3ec97c;
+  border-color: var(--ink);
+  color: var(--ink);
+  box-shadow: 0 6px 0 -1px rgba(23, 35, 28, 0.22);
 }
 
 .btn-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
@@ -189,14 +191,8 @@ h1, h2, h3 { font-family: var(--font-display); }
   margin: 0 0 16px;
 }
 
-.hero .greeting .wave {
-  display: inline-block;
-  animation: wave 2.6s ease-in-out infinite;
-  transform-origin: 70% 70%;
-}
-
 .hero h1 {
-  font-weight: 700;
+  font-weight: 800;
   font-size: clamp(36px, 5.4vw, 56px);
   line-height: 1.14;
   letter-spacing: -0.02em;
@@ -204,7 +200,7 @@ h1, h2, h3 { font-family: var(--font-display); }
   max-width: 17ch;
 }
 
-/* Highlighter-marker sweep — a designer marking up a doc. */
+/* Highlighter-marker sweep, like a designer marking up a doc. */
 .highlight {
   display: inline-block;
   transform: rotate(-0.7deg);
@@ -287,9 +283,9 @@ h1, h2, h3 { font-family: var(--font-display); }
 }
 
 .process-steps li:nth-child(1)::before { background: var(--mint); transform: rotate(-4deg); }
-.process-steps li:nth-child(2)::before { background: var(--lavender); transform: rotate(3deg); }
-.process-steps li:nth-child(3)::before { background: var(--blush); transform: rotate(-2deg); }
-.process-steps li:nth-child(4)::before { background: var(--butter); transform: rotate(4deg); }
+.process-steps li:nth-child(2)::before { background: var(--peach); transform: rotate(3deg); }
+.process-steps li:nth-child(3)::before { background: var(--butter); transform: rotate(-2deg); }
+.process-steps li:nth-child(4)::before { background: var(--green-soft); transform: rotate(4deg); }
 
 .process-steps strong {
   display: block;
@@ -322,8 +318,8 @@ h1, h2, h3 { font-family: var(--font-display); }
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.work-card.is-blush { background: var(--blush); }
-.work-card.is-lavender { background: var(--lavender); }
+.work-card.is-mint { background: var(--mint); }
+.work-card.is-peach { background: var(--peach); }
 
 .work-card:hover {
   transform: translateY(-5px) rotate(-0.35deg);
@@ -338,7 +334,7 @@ h1, h2, h3 { font-family: var(--font-display); }
 }
 
 /* Grid children default to min-width:auto, which lets a wide screenshot
-   blow out the column — this is what pushed the mockup off-screen. */
+   blow out the column, which pushed the mockup off-screen. */
 .work-card-inner > * { min-width: 0; }
 
 .work-card-visual { display: flex; align-items: center; justify-content: center; }
@@ -353,7 +349,7 @@ h1, h2, h3 { font-family: var(--font-display); }
 }
 
 .work-card h3 {
-  font-weight: 700;
+  font-weight: 800;
   font-size: 28px;
   line-height: 1.2;
   letter-spacing: -0.01em;
@@ -374,8 +370,8 @@ h1, h2, h3 { font-family: var(--font-display); }
   font-weight: 700;
   padding: 6px 13px;
   border-radius: 999px;
-  background: var(--accent-soft);
-  color: var(--accent-dark);
+  background: var(--green-soft);
+  color: var(--green-deep);
 }
 
 .work-card .tag { background: rgba(255, 255, 255, 0.8); color: var(--ink); }
@@ -387,7 +383,7 @@ h1, h2, h3 { font-family: var(--font-display); }
   margin-top: 22px;
   font-family: var(--font-display);
   font-weight: 700;
-  color: var(--accent-dark);
+  color: var(--green-deep);
 }
 
 .work-card .cta-label .arrow { display: inline-block; transition: transform 0.18s ease; }
@@ -454,7 +450,7 @@ h1, h2, h3 { font-family: var(--font-display); }
 
 .site-footer .aside { margin-top: 10px; font-size: 14px; color: var(--ink-faint); }
 .site-footer a { color: var(--ink-muted); text-decoration: none; font-weight: 500; }
-.site-footer a:hover { color: var(--accent); }
+.site-footer a:hover { color: var(--green-deep); }
 
 /* Case study pages */
 .cs-header { padding: 20px 0 36px; }
@@ -467,10 +463,10 @@ h1, h2, h3 { font-family: var(--font-display); }
   text-decoration: none;
   margin-bottom: 22px;
 }
-.cs-header .back-link:hover { color: var(--accent); }
+.cs-header .back-link:hover { color: var(--green-deep); }
 
 .cs-header h1 {
-  font-weight: 700;
+  font-weight: 800;
   font-size: clamp(32px, 4.8vw, 46px);
   line-height: 1.15;
   letter-spacing: -0.02em;
@@ -491,7 +487,7 @@ h1, h2, h3 { font-family: var(--font-display); }
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
-  background: var(--lavender);
+  background: var(--peach);
   border-radius: 20px;
   padding: 22px 26px;
 }
@@ -516,7 +512,7 @@ h1, h2, h3 { font-family: var(--font-display); }
   font-family: var(--font-display);
   font-size: 13px;
   font-weight: 700;
-  color: var(--accent);
+  color: var(--green-deep);
   margin: 0 0 10px;
 }
 
@@ -547,7 +543,7 @@ h1, h2, h3 { font-family: var(--font-display); }
   font-family: var(--font-display);
   font-size: 40px;
   font-weight: 700;
-  color: var(--accent);
+  color: var(--green-deep);
   display: block;
   line-height: 1.1;
 }
@@ -571,7 +567,7 @@ h1, h2, h3 { font-family: var(--font-display); }
 .about-header { padding: 20px 0 8px; }
 
 .about-header h1 {
-  font-weight: 700;
+  font-weight: 800;
   font-size: clamp(34px, 5vw, 46px);
   letter-spacing: -0.02em;
   margin: 0 0 20px;
@@ -629,19 +625,11 @@ h1, h2, h3 { font-family: var(--font-display); }
   font-weight: 500;
   border-radius: 999px;
   padding: 7px 15px;
-  background: var(--accent-soft);
+  background: var(--green-soft);
   color: var(--ink);
 }
 
 /* Motion */
-@keyframes wave {
-  0%, 100% { transform: rotate(0deg); }
-  15% { transform: rotate(15deg); }
-  30% { transform: rotate(-8deg); }
-  45% { transform: rotate(15deg); }
-  60% { transform: rotate(0deg); }
-}
-
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(16px); }
   to { opacity: 1; transform: translateY(0); }
@@ -672,7 +660,6 @@ h1, h2, h3 { font-family: var(--font-display); }
   .hero h1,
   .hero p.lede,
   .hero .cta-row,
-  .hero .credibility,
-  .hero .greeting .wave { animation: none; }
+  .hero .credibility { animation: none; }
   .work-card:hover { transform: none; }
 }
