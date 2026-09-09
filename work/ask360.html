@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ask360: AI Support Assistant | Casey Stoneback</title>
-<link rel="stylesheet" href="../css/style.css?v=11">
+<link rel="stylesheet" href="../css/style.css?v=12">
 </head>
 <body>
 
@@ -23,12 +23,12 @@
   <div class="wrap">
     <a class="back-link" href="../index.html#work">&larr; All work</a>
     <h1>Ask360: AI Support Assistant</h1>
-    <p class="summary">Requirements, conversation design, and research for the AI assistant built into Fiserv's client support portal, turning a search-then-retype support journey into a single conversation.</p>
+    <p class="summary">Redesigning how financial-institution clients get service, from the interviews that mapped the problem through an AI assistant built into the portal as one continuous journey. Piloting with 400 clients.</p>
     <div class="tag-row">
+      <span class="tag">Experience design</span>
       <span class="tag">Conversation design</span>
-      <span class="tag">Visual design</span>
+      <span class="tag">User research</span>
       <span class="tag">Requirements</span>
-      <span class="tag">Usability testing</span>
     </div>
     <dl class="cs-meta">
       <div>
@@ -37,7 +37,7 @@
       </div>
       <div>
         <dt>Role</dt>
-        <dd>Product Experience Designer</dd>
+        <dd>Product Experience Designer, primary designer</dd>
       </div>
       <div>
         <dt>Timeline</dt>
@@ -45,7 +45,7 @@
       </div>
       <div>
         <dt>Partners</dt>
-        <dd>Engineering, knowledge platform, client users</dd>
+        <dd>Sierra, engineering, knowledge platform</dd>
       </div>
     </dl>
   </div>
@@ -56,10 +56,10 @@
     <p class="num">01</p>
     <h2>Context</h2>
     <p>Fiserv's client support portal is where financial-institution clients go when something isn't working. Getting to an answer was the problem. Knowledge articles and product documentation were hard to surface through search, and what did surface wasn't always current. When search failed, the client opened an inquiry and retyped the whole situation from scratch.</p>
-    <p>Ask360 is built to close that gap and make self-service actually work. A client describes the problem in their own words, gets documentation back for the products they actually license, and if that doesn't resolve it, opens an inquiry from inside the same conversation with the context already attached. One journey instead of three.</p>
+    <p>Ask360 is the redesign of that experience. A client describes the problem in their own words, gets documentation back for the products they actually license, and if that doesn't resolve it, opens an inquiry from inside the same conversation with the context already attached. One journey instead of three.</p>
     <div class="media-placeholder">
       <span class="tag">Add screenshot</span><br>
-      Portal landing screen: sidebar navigation, inquiries dashboard, AI assistant launcher
+      Before and after of the service journey, or the portal landing screen with the assistant open
     </div>
   </div>
 </section>
@@ -68,7 +68,7 @@
   <div class="wrap">
     <p class="num">02</p>
     <h2>My role</h2>
-    <p>I own both the requirements and the design on this one. I write the user stories and acceptance criteria that engineering and the knowledge-platform team build against, including the boundaries around what data the assistant is allowed to touch. I also did the visual design and built the working prototype, using Figma Make and GitHub Copilot.</p>
+    <p>I was the primary designer. I ran the interviews that defined the problem, designed the experience through successive rounds of iteration, and built the working prototype with Figma Make and GitHub Copilot. I also wrote the requirements and acceptance criteria that engineering and the knowledge-platform team built against, including the rules for what the assistant may surface and to whom.</p>
   </div>
 </section>
 
@@ -78,8 +78,27 @@
     <h2>Process</h2>
 
     <div class="cs-block">
-      <h3>Making the answer specific to the client</h3>
-      <p>A generic answer pulled from generic documentation is exactly what the old search already did badly. So the assistant needed to know which products a client actually licenses, alongside their account and case data, and answer against that instead of describing features they don't own. Defining which of those fields it could surface, and how much of each, shaped the requirements before any conversation design started.</p>
+      <h3>Starting with how service actually worked</h3>
+      <p>Before designing anything I interviewed clients about how they got help today: what they searched for, where they gave up, and what they did next. The pattern was consistent enough to design against. Search rarely surfaced the right article, what it did surface wasn't always current, and the fallback was always an inquiry that meant retyping everything. That reframed the problem as the whole service journey rather than a missing chatbot.</p>
+    </div>
+
+    <div class="cs-block">
+      <h3>Redesigning the experience in iterations</h3>
+      <p>I designed the experience in rounds instead of one handoff: redesign the flow, put it in front of people, change what didn't work, go again. I did the visual design and built each version into a clickable prototype with Figma Make and GitHub Copilot, so every round could be judged as a real experience rather than a static screen. Each pass tightened the path from describing a problem, to reading something that helps, to opening an inquiry only if one is still needed.</p>
+      <div class="media-placeholder">
+        <span class="tag">Add screenshot</span><br>
+        Two or three design iterations side by side, showing what changed between rounds and why
+      </div>
+    </div>
+
+    <div class="cs-block">
+      <h3>Building an assistant that knows the client</h3>
+      <p>We partnered with Sierra to build the assistant itself, giving it the client's details so it could help someone troubleshoot instead of returning the same generic documentation search already returned. That context is the whole difference: it answers against the products a client actually licenses and the state of their account, so the response fits their setup rather than describing features they don't own.</p>
+    </div>
+
+    <div class="cs-block">
+      <h3>Making it native rather than bolted on</h3>
+      <p>A chat widget dropped into the corner of the page would have left the broken journey intact underneath it. We integrated the assistant into the portal as a native experience with one continuous journey: describe the problem, troubleshoot with what comes back, and open an inquiry from inside the same conversation, context already attached, without duplicating the work by retyping it.</p>
     </div>
 
     <div class="cs-block">
@@ -88,27 +107,19 @@
     </div>
 
     <div class="cs-block">
-      <h3>Mapping the conversation</h3>
-      <p>I worked with engineering and the knowledge-platform team to document 40+ conversational use cases for the portal, and, for each one, the edge cases: what happens when the assistant doesn't have enough data to answer, when a client asks something out of scope, and when the documentation can't resolve it and the client needs to open an inquiry instead. I wrote the acceptance criteria for each so engineering had a clear definition of "done" and QA had something concrete to test against.</p>
-      <div class="media-placeholder">
-        <span class="tag">Add screenshot</span><br>
-        Example use case / acceptance criteria doc, or the assistant handling an edge case
-      </div>
-    </div>
-
-    <div class="cs-block">
-      <h3>Designing it, not just specifying it</h3>
-      <p>I did the visual design for the assistant and built it into a working prototype with Figma Make and GitHub Copilot, instead of handing over static screens. Something clickable meant the flows could be judged as an actual experience: typing a real question, reading what came back, deciding whether the answer was enough or an inquiry was still needed.</p>
-    </div>
-
-    <div class="cs-block">
       <h3>Designing for whatever screen it opens on</h3>
-      <p>Clients open the portal from a desk and from a phone between meetings, so the assistant is adaptive rather than desktop-only. The same conversation, documentation, and inquiry flow had to hold up at desktop, tablet, and mobile widths, which meant specifying how the chat panel, the returned articles, and the inquiry form reflow instead of assuming full-width layout.</p>
+      <p>Clients open the portal from a desk and from a phone between meetings, so the assistant is adaptive rather than desktop-only. The same conversation, documentation, and inquiry flow had to hold up at desktop, tablet, and mobile widths, which meant designing how the chat panel, the returned articles, and the inquiry form reflow instead of assuming full-width layout.</p>
     </div>
 
     <div class="cs-block">
-      <h3>Testing it before it existed</h3>
-      <p>I ran Wizard of Oz sessions with 10 client users, playing the assistant myself behind the prototype so people could work through real problems before any of the model behaviour was built. Where someone got stuck, described a problem in words the flows didn't anticipate, or expected an action the assistant never offered, I changed the flows and the copy between sessions. A recurring monthly user group kept that feedback coming after the sessions ended.</p>
+      <h3>Writing it down so it could be built</h3>
+      <p>Alongside the design, I documented 40+ conversational use cases and their edge cases: what happens when the assistant doesn't have enough data to answer, when a client asks something out of scope, and when the documentation can't resolve it and the client needs to open an inquiry instead. Each one got acceptance criteria, so engineering had a clear definition of "done" and QA had something concrete to test against.</p>
+    </div>
+
+    <div class="cs-block">
+      <h3>Testing, then keeping the loop open</h3>
+      <p>I ran Wizard of Oz sessions with 10 client users, playing the assistant myself behind the prototype so people could work through real problems before any of the model behaviour was built. Where someone got stuck, described a problem in words the flows didn't anticipate, or expected an action the assistant never offered, I changed the flows and the copy between sessions.</p>
+      <p>That didn't stop once it was built. We host recurring feedback sessions to hear how clients are actually using it, what works and what doesn't, and each round feeds the next: more functionality, and an assistant that feels more native to the portal each time.</p>
     </div>
   </div>
 </section>
@@ -117,7 +128,7 @@
   <div class="wrap">
     <p class="num">04</p>
     <h2>Collaboration &amp; stakeholders</h2>
-    <p>This only works if the same set of requirements makes sense to several audiences at once: engineering needs to know exactly what's buildable and where the data boundaries are, the knowledge-platform team needs to know which content gaps to fill so the assistant has something accurate to draw from, and the teams that own account and permissions data need to agree on precisely what can be exposed and to whom. Keeping requirements consistent across those groups, and re-aligning them every time testing surfaced a new edge case, was most of the day-to-day work.</p>
+    <p>The design only holds up if several groups agree on the same set of constraints: Sierra needs to know what the assistant should be able to do and with which client data, engineering needs to know what's buildable and where the data boundaries are, the knowledge-platform team needs to know which content gaps to fill so there's something accurate to draw from, and the teams that own account and permissions data need to agree on precisely what can be exposed and to whom. Keeping that consistent, and re-aligning it every time a feedback session surfaced something new, was most of the day-to-day work.</p>
     <div class="media-placeholder">
       <span class="tag">Add detail</span><br>
       A specific example of a stakeholder disagreement (e.g. data exposure vs. answer completeness) and how it was resolved
@@ -128,22 +139,27 @@
 <section class="cs-section">
   <div class="wrap">
     <p class="num">05</p>
-    <h2>Outcome</h2>
+    <h2>Where it stands</h2>
     <div class="stat-row">
       <div class="stat">
-        <span class="num-big">40+</span>
-        <span class="label">conversational use cases documented with acceptance criteria</span>
+        <span class="num-big">400</span>
+        <span class="label">clients in the pilot launching at the end of September</span>
       </div>
       <div class="stat">
         <span class="num-big">10</span>
         <span class="label">client users in Wizard of Oz testing</span>
       </div>
       <div class="stat">
-        <span class="num-big">15%</span>
-        <span class="label">reduction in mean time to resolution and average handle time</span>
+        <span class="num-big">40+</span>
+        <span class="label">conversational use cases documented with acceptance criteria</span>
       </div>
     </div>
-    <p>Findings from the B2B research fed directly back into the requirements, and the changes they drove helped cut mean time to resolution and average handle time by 15% across the accounts we studied.</p>
+    <p>The assistant pilots with 400 clients at the end of September, which is the first read on whether the redesigned journey holds up outside of testing.</p>
+    <!-- Update this section after the pilot with the real adoption and resolution numbers. -->
+    <div class="media-placeholder">
+      <span class="tag">Add detail</span><br>
+      Post-pilot results: adoption, self-service resolution rate, or what the feedback sessions changed
+    </div>
   </div>
 </section>
 
