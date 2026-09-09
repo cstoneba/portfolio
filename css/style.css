@@ -29,10 +29,10 @@
   --accent-deep: #002db4;
   --accent-soft: #e5eaf9;
 
-  /* Blue against sand, never green against red: the pairing survives
-     deuteranopia and protanopia, which collapse red-green distinctions. */
+  /* Blue against a cool grey, never green against red: red-green pairs
+     collapse under deuteranopia and protanopia. */
   --tint-blue: #e7ecfb;
-  --tint-sand: #f4ede1;
+  --tint-gray: #eff1f5;
   --highlight: #fbefc9;
 
   --max-width: 900px;
@@ -276,9 +276,9 @@ h1, h2, h3 { font-family: var(--font-display); }
 }
 
 .process-steps li:nth-child(1)::before { background: var(--tint-blue); transform: rotate(-4deg); }
-.process-steps li:nth-child(2)::before { background: var(--tint-sand); transform: rotate(3deg); }
+.process-steps li:nth-child(2)::before { background: var(--tint-gray); transform: rotate(3deg); }
 .process-steps li:nth-child(3)::before { background: var(--tint-blue); transform: rotate(-2deg); }
-.process-steps li:nth-child(4)::before { background: var(--tint-sand); transform: rotate(4deg); }
+.process-steps li:nth-child(4)::before { background: var(--tint-gray); transform: rotate(4deg); }
 
 .process-steps strong {
   display: block;
@@ -312,7 +312,7 @@ h1, h2, h3 { font-family: var(--font-display); }
 }
 
 .work-card.is-blue { background: var(--tint-blue); }
-.work-card.is-sand { background: var(--tint-sand); }
+.work-card.is-gray { background: var(--tint-gray); }
 
 .work-card:hover {
   transform: translateY(-5px) rotate(-0.35deg);
@@ -480,7 +480,7 @@ h1, h2, h3 { font-family: var(--font-display); }
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
-  background: var(--tint-sand);
+  background: var(--tint-gray);
   border-radius: 20px;
   padding: 22px 26px;
 }
