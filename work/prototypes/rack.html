@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0e1116">
+<title>Rack</title>
+<style>
+  /* No webfonts on purpose: the prototype has to work in a basement gym
+     with no signal (REQ-B7). */
+  :root {
+    --bg: #0e1116;
+    --surface: #171b22;
+    --surface-2: #1f242e;
+    --ink: #f2f4f7;
+    --muted: #99a2b2;
+    --faint: #6b7484;
+    --line: #262c38;
+    --accent: #4d7cff;
+    --accent-ink: #ffffff;
+    --amber: #f5a524;
+    --amber-soft: #2a2213;
+    --accent-soft: #17213d;
+    --tap: 48px;
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+  html, body { height: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font);
+    font-size: 17px;
+    line-height: 1.45;
+    -webkit-font-smoothing: antialiased;
+    overscroll-behavior-y: contain;
+  }
+
+  button { font-family: inherit; font-size: inherit; color: inherit; cursor: pointer; }
+
+  .app {
+    max-width: 560px;
+    margin: 0 auto;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: calc(96px + env(safe-area-inset-bottom));
+  }
+
+  /* Header */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(14, 17, 22, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+    padding: calc(12px + env(safe-area-inset-top)) 18px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+
+  .wordmark span { color: var(--accent); }
+
+  .context-chip {
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 7px 13px;
+    font-size: 13px;
+    color: var(--muted);
+    min-height: 36px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  main { padding: 20px 18px 0; flex: 1; }
+
+  .step-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 8px;
+  }
+
+  h1 {
+    font-size: 27px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin: 0 0 6px;
+  }
+
+  .sub { color: var(--muted); font-size: 15px; margin: 0 0 24px; }
+
+  h2 {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--faint);
+    margin: 26px 0 11px;
+  }
+
+  /* Chips / toggles */
+  .chip-row { display: flex; flex-wrap: wrap; gap: 9px; }
+
+  .chip {
+    min-height: var(--tap);
+    padding: 12px 16px;
+    border-radius: 12px;
+    border: 1.5px solid var(--line);
+    background: var(--surface);
+    color: var(--ink);
+    font-size: 15px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: border-color .12s, background .12s;
+  }
+
+  .chip[aria-pressed="true"], .chip.on {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+    color: var(--ink);
+  }
+
+  .chip .tick { color: var(--accent); font-weight: 800; }
+  .chip[aria-pressed="false"] .tick { visibility: hidden; }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+  .grid-2 .chip { justify-content: flex-start; }
+
+  /* Dumbbell max stepper */
+  .stepper {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--surface);
+    border: 1.5px solid var(--line);
+    border-radius: 12px;
+    padding: 10px 12px;
+  }
+
+  .stepper button {
+    width: var(--tap);
+    height: var(--tap);
+    border-radius: 10px;
+    border: none;
+    background: var(--surface-2);
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .stepper button:active { background: var(--accent); color: var(--accent-ink); }
+
+  .stepper .val {
+    flex: 1;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .stepper .val small { display: block; font-size: 12px; font-weight: 500; color: var(--faint); letter-spacing: .04em; }
+
+  /* Session */
+  .banner {
+    background: var(--amber-soft);
+    border: 1px solid rgba(245,165,36,.35);
+    border-radius: 12px;
+    padding: 13px 15px;
+    font-size: 14.5px;
+    color: #f6d9a4;
+    margin-bottom: 18px;
+  }
+
+  .banner b { color: var(--amber); }
+
+  .ex {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 15px 15px 12px;
+    margin-bottom: 12px;
+  }
+
+  .ex.done { opacity: .55; }
+
+  .ex-top { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; }
+
+  .ex-name { font-size: 18px; font-weight: 700; letter-spacing: -0.01em; margin: 0; }
+
+  .ex-meta {
+    font-size: 13.5px;
+    color: var(--muted);
+    margin: 3px 0 0;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .pill {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    padding: 4px 8px;
+    border-radius: 6px;
+    background: var(--surface-2);
+    color: var(--faint);
+    white-space: nowrap;
+  }
+
+  .pill.main { background: var(--accent-soft); color: var(--accent); }
+
+  .note {
+    margin: 10px 0 0;
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--amber);
+    background: var(--amber-soft);
+    border-radius: 8px;
+    padding: 9px 11px;
+  }
+
+  .note.swapped { color: #a9c2ff; background: var(--accent-soft); }
+
+  .sets { display: flex; gap: 8px; margin: 13px 0 0; flex-wrap: wrap; }
+
+  .set {
+    width: var(--tap);
+    height: var(--tap);
+    border-radius: 10px;
+    border: 1.5px solid var(--line);
+    background: var(--surface-2);
+    font-size: 15px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .set[aria-pressed="true"] {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-ink);
+  }
+
+  .ex-actions { display: flex; gap: 8px; margin-top: 12px; }
+
+  .btn-ghost {
+    flex: 1;
+    min-height: 44px;
+    border-radius: 10px;
+    border: 1.5px solid var(--line);
+    background: transparent;
+    color: var(--muted);
+    font-size: 14.5px;
+    font-weight: 600;
+  }
+
+  .btn-ghost:active { border-color: var(--accent); color: var(--ink); }
+
+  /* Bottom action */
+  .bottom {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 30;
+    padding: 12px 18px calc(12px + env(safe-area-inset-bottom));
+    background: linear-gradient(to top, var(--bg) 62%, rgba(14,17,22,0));
+  }
+
+  .bottom-inner { max-width: 560px; margin: 0 auto; }
+
+  .btn-primary {
+    width: 100%;
+    min-height: 56px;
+    border-radius: 14px;
+    border: none;
+    background: var(--accent);
+    color: var(--accent-ink);
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  .btn-primary:active { transform: translateY(1px); }
+  .btn-primary[disabled] { opacity: .4; }
+
+  /* Swap sheet */
+  .scrim {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.6);
+    z-index: 40;
+  }
+
+  .sheet {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: 50;
+    background: var(--surface);
+    border-radius: 20px 20px 0 0;
+    border-top: 1px solid var(--line);
+    max-height: 86vh;
+    overflow-y: auto;
+    padding: 8px 18px calc(24px + env(safe-area-inset-bottom));
+    animation: rise .22s ease-out;
+  }
+
+  @keyframes rise { from { transform: translateY(24px); opacity: .4; } to { transform: none; opacity: 1; } }
+
+  @media (prefers-reduced-motion: reduce) { .sheet { animation: none; } }
+
+  .handle { width: 40px; height: 4px; background: var(--line); border-radius: 2px; margin: 6px auto 16px; }
+
+  .sheet h3 { font-size: 20px; font-weight: 800; margin: 0 0 4px; letter-spacing: -0.01em; }
+  .sheet .sheet-sub { color: var(--muted); font-size: 14.5px; margin: 0 0 18px; }
+
+  .opt {
+    width: 100%;
+    text-align: left;
+    background: var(--surface-2);
+    border: 1.5px solid var(--line);
+    border-radius: 13px;
+    padding: 14px 15px;
+    margin-bottom: 10px;
+    min-height: var(--tap);
+  }
+
+  .opt:active { border-color: var(--accent); }
+
+  .opt-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+  .opt-name { font-size: 16.5px; font-weight: 700; }
+
+  .match {
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    padding: 4px 8px;
+    border-radius: 5px;
+    white-space: nowrap;
+  }
+
+  .match.close { background: var(--accent-soft); color: var(--accent); }
+  .match.diff { background: var(--amber-soft); color: var(--amber); }
+
+  .opt-trade { font-size: 14px; color: var(--muted); margin: 7px 0 0; line-height: 1.5; }
+  .opt-equip { font-size: 12.5px; color: var(--faint); margin: 6px 0 0; }
+
+  .empty { color: var(--muted); font-size: 15px; padding: 8px 0 18px; line-height: 1.55; }
+
+  .done-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .done-card .big { font-size: 40px; font-weight: 800; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+  .done-card p { color: var(--muted); font-size: 14.5px; margin: 6px 0 0; }
+
+  .foot-note {
+    color: var(--faint);
+    font-size: 12.5px;
+    line-height: 1.55;
+    margin: 22px 0 8px;
+  }
+
+  button:focus-visible, .opt:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+</style>
+</head>
+<body>
+
+<div class="app">
+  <div class="topbar">
+    <div class="wordmark">Rack<span>.</span></div>
+    <button class="context-chip" id="contextChip" hidden>
+      <span id="contextText">Full gym / 60 min</span>
+      <span aria-hidden="true">›</span>
+    </button>
+  </div>
+
+  <main id="main"></main>
+</div>
+
+<div class="bottom">
+  <div class="bottom-inner">
+    <button class="btn-primary" id="primaryBtn">Build my session</button>
+  </div>
+</div>
+
+<div id="sheetHost"></div>
+
+<script>
+/* ---------------------------------------------------------------
+   Exercise library.
+   loadCeiling  1-3  how heavy you can realistically load it
+   stability    1-3  how much stabiliser and core demand it carries
+   --------------------------------------------------------------- */
+const EX = [
+  { id:'back-squat',   name:'Back Squat',            pattern:'squat', muscle:'quads',      equip:['barbell','rack'],   loadCeiling:3, stability:3, unilateral:false },
+  { id:'front-squat',  name:'Front Squat',           pattern:'squat', muscle:'quads',      equip:['barbell','rack'],   loadCeiling:3, stability:3, unilateral:false },
+  { id:'goblet-squat', name:'Goblet Squat',          pattern:'squat', muscle:'quads',      equip:['dumbbell'],         loadCeiling:1, stability:2, unilateral:false },
+  { id:'leg-press',    name:'Leg Press',             pattern:'squat', muscle:'quads',      equip:['machine'],          loadCeiling:3, stability:1, unilateral:false },
+  { id:'split-squat',  name:'Bulgarian Split Squat', pattern:'lunge', muscle:'quads',      equip:['dumbbell','bench'], loadCeiling:2, stability:3, unilateral:true  },
+  { id:'walking-lunge',name:'Walking Lunge',         pattern:'lunge', muscle:'quads',      equip:['dumbbell'],         loadCeiling:2, stability:3, unilateral:true  },
+  { id:'step-up',      name:'Step-Up',               pattern:'lunge', muscle:'quads',      equip:['dumbbell','bench'], loadCeiling:2, stability:3, unilateral:true  },
+
+  { id:'rdl',          name:'Romanian Deadlift',     pattern:'hinge', muscle:'hamstrings', equip:['barbell'],          loadCeiling:3, stability:2, unilateral:false },
+  { id:'db-rdl',       name:'Dumbbell RDL',          pattern:'hinge', muscle:'hamstrings', equip:['dumbbell'],         loadCeiling:2, stability:2, unilateral:false },
+  { id:'kb-swing',     name:'Kettlebell Swing',      pattern:'hinge', muscle:'hamstrings', equip:['kettlebell'],       loadCeiling:2, stability:2, unilateral:false },
+  { id:'back-ext',     name:'Back Extension',        pattern:'hinge', muscle:'hamstrings', equip:['machine'],          loadCeiling:1, stability:2, unilateral:false },
+  { id:'leg-curl',     name:'Leg Curl',              pattern:'hinge', muscle:'hamstrings', equip:['machine'],          loadCeiling:2, stability:1, unilateral:false },
+  { id:'slider-curl',  name:'Sliding Leg Curl',      pattern:'hinge', muscle:'hamstrings', equip:['bodyweight'],       loadCeiling:1, stability:2, unilateral:false },
+
+  { id:'bench',        name:'Bench Press',           pattern:'pushH', muscle:'chest',      equip:['barbell','bench'],  loadCeiling:3, stability:2, unilateral:false },
+  { id:'db-bench',     name:'Dumbbell Bench Press',  pattern:'pushH', muscle:'chest',      equip:['dumbbell','bench'], loadCeiling:2, stability:3, unilateral:false },
+  { id:'machine-press',name:'Chest Press Machine',   pattern:'pushH', muscle:'chest',      equip:['machine'],          loadCeiling:3, stability:1, unilateral:false },
+  { id:'pushup',       name:'Push-Up',               pattern:'pushH', muscle:'chest',      equip:['bodyweight'],       loadCeiling:1, stability:3, unilateral:false },
+  { id:'cable-fly',    name:'Cable Fly',             pattern:'pushH', muscle:'chest',      equip:['cables'],           loadCeiling:2, stability:1, unilateral:false },
+  { id:'db-fly',       name:'Dumbbell Fly',          pattern:'pushH', muscle:'chest',      equip:['dumbbell','bench'], loadCeiling:1, stability:2, unilateral:false },
+
+  { id:'ohp',          name:'Overhead Press',        pattern:'pushV', muscle:'shoulders',  equip:['barbell'],          loadCeiling:3, stability:3, unilateral:false },
+  { id:'db-ohp',       name:'Dumbbell Shoulder Press',pattern:'pushV',muscle:'shoulders',  equip:['dumbbell'],         loadCeiling:2, stability:3, unilateral:false },
+  { id:'machine-ohp',  name:'Shoulder Press Machine',pattern:'pushV', muscle:'shoulders',  equip:['machine'],          loadCeiling:2, stability:1, unilateral:false },
+  { id:'pike-pushup',  name:'Pike Push-Up',          pattern:'pushV', muscle:'shoulders',  equip:['bodyweight'],       loadCeiling:1, stability:3, unilateral:false },
+
+  { id:'bb-row',       name:'Barbell Row',           pattern:'pullH', muscle:'back',       equip:['barbell'],          loadCeiling:3, stability:3, unilateral:false },
+  { id:'db-row',       name:'Dumbbell Row',          pattern:'pullH', muscle:'back',       equip:['dumbbell','bench'], loadCeiling:2, stability:2, unilateral:true  },
+  { id:'cable-row',    name:'Seated Cable Row',      pattern:'pullH', muscle:'back',       equip:['cables'],           loadCeiling:3, stability:1, unilateral:false },
+  { id:'inv-row',      name:'Inverted Row',          pattern:'pullH', muscle:'back',       equip:['bodyweight'],       loadCeiling:1, stability:3, unilateral:false },
+  { id:'band-row',     name:'Band Row',              pattern:'pullH', muscle:'back',       equip:['bands'],            loadCeiling:1, stability:1, unilateral:false },
+
+  { id:'pullup',       name:'Pull-Up',               pattern:'pullV', muscle:'lats',       equip:['pullupbar'],        loadCeiling:2, stability:3, unilateral:false },
+  { id:'lat-pulldown', name:'Lat Pulldown',          pattern:'pullV', muscle:'lats',       equip:['cables'],           loadCeiling:2, stability:1, unilateral:false },
+  { id:'band-pulldown',name:'Band Pulldown',         pattern:'pullV', muscle:'lats',       equip:['bands'],            loadCeiling:1, stability:1, unilateral:false },
+
+  { id:'plank',        name:'Plank',                 pattern:'core',  muscle:'core',       equip:['bodyweight'],       loadCeiling:1, stability:3, unilateral:false },
+  { id:'deadbug',      name:'Dead Bug',              pattern:'core',  muscle:'core',       equip:['bodyweight'],       loadCeiling:1, stability:2, unilateral:false },
+  { id:'cable-crunch', name:'Cable Crunch',          pattern:'core',  muscle:'core',       equip:['cables'],           loadCeiling:2, stability:1, unilateral:false }
+];
+
+const byId = id => EX.find(e => e.id === id);
+
+/* Programme: priority 1 = main lift (protected), 3 = accessory (cut first) */
+const PROGRAMME = {
+  name: 'Lower A',
+  week: 4,
+  items: [
+    { ex:'back-squat',  sets:4, reps:5,  priority:1, load:'185 lb' },
+    { ex:'rdl',         sets:3, reps:8,  priority:2, load:'135 lb' },
+    { ex:'split-squat', sets:3, reps:10, priority:2, load:'40 lb'  },
+    { ex:'leg-curl',    sets:3, reps:12, priority:3, load:'70 lb'  },
+    { ex:'plank',       sets:3, reps:45, priority:3, load:'bodyweight', isTime:true }
+  ]
+};
+
+const EQUIPMENT = [
+  { id:'barbell',    label:'Barbell' },
+  { id:'rack',       label:'Squat rack' },
+  { id:'dumbbell',   label:'Dumbbells' },
+  { id:'bench',      label:'Bench' },
+  { id:'machine',    label:'Machines' },
+  { id:'cables',     label:'Cables' },
+  { id:'pullupbar',  label:'Pull-up bar' },
+  { id:'kettlebell', label:'Kettlebells' },
+  { id:'bands',      label:'Bands' }
+];
+
+const PRESETS = {
+  full:   { label:'Full gym',      equip:['barbell','rack','dumbbell','bench','machine','cables','pullupbar','kettlebell','bands'], dbMax:100 },
+  hotel:  { label:'Hotel gym',     equip:['dumbbell','bench','machine'], dbMax:50 },
+  dbonly: { label:'Dumbbells only',equip:['dumbbell','bodyweight'], dbMax:30 },
+  home:   { label:'Home rack',     equip:['barbell','rack','bench','pullupbar','bands'], dbMax:0 }
+};
+
+/* Bodyweight is always available. */
+const state = load() || {
+  view: 'setup',
+  preset: 'full',
+  equip: [...PRESETS.full.equip],
+  dbMax: 50,
+  minutes: 60,
+  session: null,
+  logged: {},
+  swaps: {}
+};
+
+function save() {
+  try { localStorage.setItem('rack.v1', JSON.stringify(state)); } catch (e) {}
+}
+function load() {
+  try { return JSON.parse(localStorage.getItem('rack.v1')); } catch (e) { return null; }
+}
+
+const has = id => id === 'bodyweight' || state.equip.includes(id);
+const canDo = ex => ex.equip.every(has);
+
+/* --- Substitution ranking (REQ-B2) ------------------------------- */
+function score(original, cand) {
+  let s = 0;
+  if (cand.pattern === original.pattern) s += 3;
+  if (cand.muscle === original.muscle) s += 2;
+  s += 2 - Math.abs(cand.loadCeiling - original.loadCeiling);
+  s += 1 - Math.abs(cand.stability - original.stability) * 0.5;
+  return s;
+}
+
+/* --- Honest tradeoff copy (REQ-B3) ------------------------------- */
+function tradeoff(original, cand) {
+  const bits = [];
+  if (cand.loadCeiling < original.loadCeiling) bits.push('harder to load heavy');
+  if (cand.loadCeiling > original.loadCeiling) bits.push('easier to load heavy');
+  if (cand.stability < original.stability) bits.push('less stabiliser and core demand');
+  if (cand.stability > original.stability) bits.push('more stabiliser demand');
+  if (cand.unilateral && !original.unilateral) bits.push('one side at a time, so it takes longer');
+  if (!cand.unilateral && original.unilateral) bits.push('both sides at once, so it is quicker');
+  if (cand.pattern !== original.pattern) bits.unshift('different movement pattern');
+  if (!bits.length) return 'Trains the same pattern and muscle at the same loading. Straight swap.';
+  return bits.join(', ').replace(/^./, c => c.toUpperCase()) + '.';
+}
+
+function alternatives(originalId, exclude = []) {
+  const original = byId(originalId);
+  return EX
+    .filter(e => e.id !== original.id && !exclude.includes(e.id) && canDo(e))
+    .filter(e => e.pattern === original.pattern || e.muscle === original.muscle)
+    .map(e => ({ ex:e, s:score(original, e) }))
+    .sort((a, b) => b.s - a.s)
+    .slice(0, 5);
+}
+
+/* --- Build the session ------------------------------------------- */
+function estimate(items) {
+  return items.reduce((m, it) => m + it.sets * 2.5, 0) + 8; // sets plus warm-up
+}
+
+function buildSession() {
+  let items = PROGRAMME.items.map(it => ({ ...it }));
+  const cut = [];
+  const notes = [];
+
+  // Swap anything the gym can't do (REQ-B2), never repeating a lift
+  // already in the session.
+  items.forEach(it => {
+    if (!canDo(byId(it.ex))) {
+      const taken = items.filter(o => o !== it).map(o => o.ex);
+      const alt = alternatives(it.ex, taken)[0];
+      if (alt) {
+        it.autoSwappedFrom = it.ex;
+        it.ex = alt.ex.id;
+        it.tradeoff = tradeoff(byId(it.autoSwappedFrom), alt.ex);
+      } else {
+        it.impossible = true;
+      }
+    }
+  });
+
+  items = items.filter(it => !it.impossible);
+
+  // Load available, not load ideal (REQ-B4)
+  items.forEach(it => {
+    const ex = byId(it.ex);
+    if (ex.equip.includes('dumbbell') && state.dbMax && state.dbMax < 45 && !it.isTime) {
+      it.reps = Math.min(20, it.reps + 5);
+      it.loadNote = `Dumbbells top out at ${state.dbMax} lb, so reps go to ${it.reps} to stay in range.`;
+      it.load = `${state.dbMax} lb`;
+    }
+  });
+
+  // Compress by priority, main lift protected (REQ-B5)
+  while (estimate(items) > state.minutes && items.some(i => i.priority === 3)) {
+    const idx = items.map(i => i.priority).lastIndexOf(3);
+    cut.push(byId(items[idx].ex).name);
+    items.splice(idx, 1);
+  }
+  while (estimate(items) > state.minutes && items.some(i => i.priority === 2 && i.sets > 2)) {
+    const it = items.filter(i => i.priority === 2).sort((a,b) => b.sets - a.sets)[0];
+    it.sets -= 1;
+    it.setNote = 'Trimmed a set to fit the time.';
+  }
+
+  if (cut.length) notes.push(`Cut to fit ${state.minutes} minutes: <b>${cut.join(', ')}</b>. Your main lift is untouched.`);
+
+  state.session = { items, notes, built: Date.now() };
+  state.logged = {};
+  save();
+}
+
+/* --- Rendering ---------------------------------------------------- */
+const main = document.getElementById('main');
+const primaryBtn = document.getElementById('primaryBtn');
+const contextChip = document.getElementById('contextChip');
+const contextText = document.getElementById('contextText');
+const sheetHost = document.getElementById('sheetHost');
+
+function presetLabel() {
+  const p = Object.values(PRESETS).find(p => p.equip.length === state.equip.length && p.equip.every(e => state.equip.includes(e)));
+  return p ? p.label : `${state.equip.length} items`;
+}
+
+function render() {
+  contextChip.hidden = state.view !== 'session';
+  contextText.textContent = `${presetLabel()} / ${state.minutes} min`;
+  if (state.view === 'setup') renderSetup(); else renderSession();
+  save();
+}
+
+function renderSetup() {
+  main.innerHTML = `
+    <p class="step-label">Today</p>
+    <h1>${PROGRAMME.name}, week ${PROGRAMME.week}</h1>
+    <p class="sub">Tell Rack what's actually here and it will build the session around it.</p>
+
+    <h2>Start from</h2>
+    <div class="chip-row">
+      ${Object.entries(PRESETS).map(([k, p]) => `
+        <button class="chip ${state.preset === k ? 'on' : ''}" data-preset="${k}">${p.label}</button>
+      `).join('')}
+    </div>
+
+    <h2>What's available</h2>
+    <div class="grid-2">
+      ${EQUIPMENT.map(e => `
+        <button class="chip" data-equip="${e.id}" aria-pressed="${has(e.id)}">
+          <span class="tick" aria-hidden="true">✓</span>${e.label}
+        </button>
+      `).join('')}
+    </div>
+
+    ${has('dumbbell') ? `
+      <h2>Heaviest dumbbell</h2>
+      <div class="stepper">
+        <button data-db="-5" aria-label="Decrease">−</button>
+        <div class="val">${state.dbMax}<small>POUNDS</small></div>
+        <button data-db="5" aria-label="Increase">+</button>
+      </div>` : ''}
+
+    <h2>Time you've got</h2>
+    <div class="chip-row">
+      ${[30, 45, 60, 75].map(m => `
+        <button class="chip ${state.minutes === m ? 'on' : ''}" data-min="${m}">${m} min</button>
+      `).join('')}
+    </div>
+
+    <p class="foot-note">Prototype. Everything runs locally and works with no signal, which is the point: gym basements don't have any.</p>
+  `;
+  primaryBtn.textContent = 'Build my session';
+  primaryBtn.disabled = state.equip.length === 0;
+}
+
+function renderSession() {
+  const s = state.session;
+  const totalSets = s.items.reduce((m, i) => m + i.sets, 0);
+  const doneSets = Object.values(state.logged).reduce((m, arr) => m + arr.filter(Boolean).length, 0);
+  const finished = doneSets >= totalSets && totalSets > 0;
+
+  main.innerHTML = `
+    <p class="step-label">${PROGRAMME.name} / week ${PROGRAMME.week}</p>
+    <h1>${Math.round(estimate(s.items))} min, ${s.items.length} exercises</h1>
+    <p class="sub">${doneSets} of ${totalSets} sets logged.</p>
+
+    ${s.notes.map(n => `<div class="banner">${n}</div>`).join('')}
+
+    ${s.items.map((it, i) => {
+      const ex = byId(it.ex);
+      const log = state.logged[i] || [];
+      const allDone = log.filter(Boolean).length >= it.sets;
+      return `
+        <div class="ex ${allDone ? 'done' : ''}">
+          <div class="ex-top">
+            <div>
+              <p class="ex-name">${ex.name}</p>
+              <p class="ex-meta">${it.sets} × ${it.isTime ? it.reps + 's' : it.reps} · ${it.load}</p>
+            </div>
+            <span class="pill ${it.priority === 1 ? 'main' : ''}">${it.priority === 1 ? 'Main lift' : ex.pattern}</span>
+          </div>
+
+          ${it.autoSwappedFrom ? `<p class="note swapped">Swapped from ${byId(it.autoSwappedFrom).name}, which needs kit you don't have. ${it.tradeoff}</p>` : ''}
+          ${it.manualTradeoff ? `<p class="note swapped">${it.manualTradeoff}</p>` : ''}
+          ${it.loadNote ? `<p class="note">${it.loadNote}</p>` : ''}
+          ${it.setNote ? `<p class="note">${it.setNote}</p>` : ''}
+
+          <div class="sets">
+            ${Array.from({ length: it.sets }, (_, k) => `
+              <button class="set" data-log="${i}:${k}" aria-pressed="${!!log[k]}" aria-label="Set ${k+1}">${k+1}</button>
+            `).join('')}
+          </div>
+
+          <div class="ex-actions">
+            <button class="btn-ghost" data-swap="${i}">Swap exercise</button>
+          </div>
+        </div>`;
+    }).join('')}
+
+    ${finished ? `
+      <div class="done-card">
+        <div class="big">${doneSets}</div>
+        <p>sets done. Next week Rack returns to Back Squat if the rack is free, and keeps progressing whatever you actually did if it isn't.</p>
+      </div>` : ''}
+
+    <p class="foot-note">Prototype: the substitution ranking, the load adjustment and the time compression are all real logic, not mocked screens.</p>
+  `;
+  primaryBtn.textContent = finished ? 'Finish session' : 'Change gym or time';
+  primaryBtn.disabled = false;
+}
+
+/* --- Swap sheet ---------------------------------------------------- */
+function openSheet(index) {
+  const it = state.session.items[index];
+  const original = byId(it.ex);
+  const taken = state.session.items.filter(o => o !== it).map(o => o.ex);
+  const opts = alternatives(it.ex, taken);
+
+  sheetHost.innerHTML = `
+    <div class="scrim" data-close="1"></div>
+    <div class="sheet" role="dialog" aria-modal="true" aria-label="Swap ${original.name}">
+      <div class="handle"></div>
+      <h3>Swap ${original.name}</h3>
+      <p class="sheet-sub">Ranked on movement pattern, muscle and how heavy you can load it. What changes is spelled out.</p>
+      ${opts.length ? opts.map(o => `
+        <button class="opt" data-pick="${index}:${o.ex.id}">
+          <div class="opt-top">
+            <span class="opt-name">${o.ex.name}</span>
+            <span class="match ${o.s >= 5 ? 'close' : 'diff'}">${o.s >= 5 ? 'Close match' : 'Different stimulus'}</span>
+          </div>
+          <p class="opt-trade">${tradeoff(original, o.ex)}</p>
+          <p class="opt-equip">Needs: ${o.ex.equip.join(', ')}</p>
+        </button>
+      `).join('') : `<p class="empty">Nothing here trains this pattern with the equipment you've got. Keep the exercise and wait for the rack, or change what's available.</p>`}
+    </div>
+  `;
+  document.body.style.overflow = 'hidden';
+}
+
+function closeSheet() {
+  sheetHost.innerHTML = '';
+  document.body.style.overflow = '';
+}
+
+/* --- Events -------------------------------------------------------- */
+document.addEventListener('click', e => {
+  const t = e.target.closest('[data-preset],[data-equip],[data-min],[data-db],[data-log],[data-swap],[data-pick],[data-close]');
+  if (!t) return;
+
+  if (t.dataset.preset) {
+    const p = PRESETS[t.dataset.preset];
+    state.preset = t.dataset.preset;
+    state.equip = [...p.equip];
+    if (p.dbMax) state.dbMax = p.dbMax;
+    render();
+  }
+
+  if (t.dataset.equip) {
+    const id = t.dataset.equip;
+    state.equip = has(id) ? state.equip.filter(x => x !== id) : [...state.equip, id];
+    state.preset = null;
+    render();
+  }
+
+  if (t.dataset.min) { state.minutes = +t.dataset.min; render(); }
+
+  if (t.dataset.db) {
+    state.dbMax = Math.max(0, Math.min(150, state.dbMax + (+t.dataset.db)));
+    render();
+  }
+
+  if (t.dataset.log) {
+    const [i, k] = t.dataset.log.split(':').map(Number);
+    const arr = state.logged[i] || (state.logged[i] = []);
+    arr[k] = !arr[k];
+    render();
+  }
+
+  if (t.dataset.swap) openSheet(+t.dataset.swap);
+
+  if (t.dataset.pick) {
+    const [i, exId] = t.dataset.pick.split(':');
+    const it = state.session.items[+i];
+    const from = byId(it.ex);
+    const to = byId(exId);
+    it.ex = exId;
+    it.manualTradeoff = `Swapped from ${from.name}. ${tradeoff(from, to)}`;
+    delete it.autoSwappedFrom;
+    closeSheet();
+    render();
+  }
+
+  if (t.dataset.close) closeSheet();
+});
+
+primaryBtn.addEventListener('click', () => {
+  if (state.view === 'setup') {
+    buildSession();
+    state.view = 'session';
+  } else {
+    state.view = 'setup';
+  }
+  window.scrollTo(0, 0);
+  render();
+});
+
+contextChip.addEventListener('click', () => { state.view = 'setup'; window.scrollTo(0,0); render(); });
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSheet(); });
+
+if (state.view === 'session' && !state.session) state.view = 'setup';
+render();
+</script>
+
+</body>
+</html>
