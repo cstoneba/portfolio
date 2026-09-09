@@ -142,38 +142,18 @@ a:hover { color: var(--accent); text-decoration-color: var(--accent); }
 
 .hero h1 {
   font-family: var(--font-display);
-  font-weight: 400;
+  font-weight: 600;
   font-size: clamp(32px, 4.6vw, 44px);
-  line-height: 1.2;
+  line-height: 1.25;
   margin: 0 0 20px;
   max-width: 18ch;
-}
-
-.hero h1 strong {
-  font-weight: 700;
-}
-
-.hero h1 .accent-text {
-  color: var(--accent);
-  font-weight: 700;
 }
 
 .hero p.lede {
   font-size: 18px;
   color: var(--ink-muted);
   max-width: 46ch;
-  margin: 0 0 20px;
-}
-
-.hero .credibility {
-  font-size: 13px;
-  color: var(--ink-faint);
-  letter-spacing: 0.02em;
-}
-
-.hero .credibility strong {
-  color: var(--ink-muted);
-  font-weight: 600;
+  margin: 0;
 }
 
 /* How I work strip */
