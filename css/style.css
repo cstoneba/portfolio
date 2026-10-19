@@ -314,6 +314,11 @@ h1, h2, h3 { font-family: var(--font-display); }
 .work-card.is-blue { background: var(--tint-blue); }
 .work-card.is-gray { background: var(--tint-gray); }
 
+/* No screenshot for this one yet. A single wide column reads as a chosen
+   format; a half-empty two-column grid reads as a missing image. */
+.work-card.is-text .work-card-inner { grid-template-columns: 1fr; }
+.work-card.is-text p { max-width: 62ch; }
+
 .work-card:hover {
   transform: translateY(-5px) rotate(-0.35deg);
   box-shadow: 0 22px 44px rgba(28, 26, 25, 0.10);
