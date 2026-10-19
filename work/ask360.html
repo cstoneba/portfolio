@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ask 360: AI Support Assistant | Casey Stoneback</title>
-<link rel="stylesheet" href="../css/style.css?v=21">
+<link rel="stylesheet" href="../css/style.css?v=22">
 </head>
 <body>
 
@@ -23,7 +23,7 @@
   <div class="wrap">
     <a class="back-link" href="../index.html#work">&larr; All work</a>
     <h1>Ask 360: AI Support Assistant</h1>
-    <p class="summary">Redesigning how financial-institution clients get service, from the interviews that mapped the problem through an AI assistant built into the portal as one continuous journey. Piloting with 400 clients.</p>
+    <p class="summary">Redesigning how financial-institution clients get service, from the interviews that mapped the problem to an AI assistant built into the portal.</p>
     <div class="tag-row">
       <span class="tag">Experience design</span>
       <span class="tag">Conversation design</span>
@@ -48,6 +48,21 @@
         <dd>Sierra, engineering, knowledge platform</dd>
       </div>
     </dl>
+
+    <dl class="cs-tldr">
+      <div>
+        <dt>The brief</dt>
+        <dd>Clients couldn't find current documentation, so every failed search became an inquiry with the whole situation retyped.</dd>
+      </div>
+      <div>
+        <dt>What I did</dt>
+        <dd>Primary designer. Ran the interviews, designed and built the prototype, and documented 40+ conversational use cases with acceptance criteria.</dd>
+      </div>
+      <div>
+        <dt>Where it stands</dt>
+        <dd>Piloting with 400 clients. Powerful for people already troubleshooting; adds friction for routine requests, which is the problem I'm on now.</dd>
+      </div>
+    </dl>
   </div>
 </header>
 
@@ -55,7 +70,7 @@
   <div class="wrap">
     <p class="num">01</p>
     <h2>Context</h2>
-    <p>Fiserv's client support portal is where financial-institution clients go when something isn't working, and getting to an answer was the problem. Ask 360 is the redesign of that experience: a client describes the problem in their own words, gets documentation back for the products they actually license, and opens an inquiry from inside the same conversation only if they still need one.</p>
+    <p>Fiserv's client support portal is where financial-institution clients go when something isn't working, and getting to an answer was the problem. Ask 360 is the redesign: describe the problem in your own words, get documentation back for the products you actually license, and open an inquiry from inside the same conversation only if you still need one.</p>
     <figure class="cs-figure">
       <div class="browser-frame">
         <div class="frame-bar">
@@ -74,7 +89,7 @@
   <div class="wrap">
     <p class="num">02</p>
     <h2>My role</h2>
-    <p>Primary designer. I ran the interviews that defined the problem, designed the experience through successive rounds of iteration, and built the working prototype with Figma Make and GitHub Copilot. I also wrote the requirements and acceptance criteria that engineering and the knowledge-platform team built against.</p>
+    <p>Primary designer. I ran the interviews that defined the problem, designed the experience through successive rounds, and built the working prototype with Figma Make and GitHub Copilot. I also wrote the requirements and acceptance criteria engineering and the knowledge-platform team built against.</p>
   </div>
 </section>
 
@@ -88,24 +103,18 @@
       <li>What it did surface wasn't always current.</li>
       <li>When search failed, the only path left was opening an inquiry and retyping the whole situation.</li>
     </ul>
-    <p>That reframed the problem as the whole service journey rather than a missing chatbot.</p>
-    <div class="media-placeholder">
-      <span class="tag">Add research findings</span><br>
-      Affinity map, journey map, or the findings deck you presented back to stakeholders
-    </div>
+    <p>That reframed the problem as the whole service journey, not a missing chatbot.</p>
+    <!-- Worth adding when you have it: the affinity or journey map from this round. -->
 
     <div class="cs-block">
       <h3>Wizard of Oz testing</h3>
       <p>I ran sessions with 10 client users, playing the assistant myself behind the prototype so people could work through real problems before any model behaviour existed. Where someone got stuck, or expected something the assistant never offered, I changed the flows and copy between sessions.</p>
-      <div class="media-placeholder">
-        <span class="tag">Add detail</span><br>
-        One specific change that came directly out of a session
-      </div>
+      <!-- Worth adding: one specific change that came out of a session. -->
     </div>
 
     <div class="cs-block">
       <h3>Feedback sessions</h3>
-      <p>We host recurring sessions with clients to hear how they're actually using it, what works and what doesn't. Each round feeds the next set of functionality.</p>
+      <p>Recurring sessions with clients on how they're actually using it. Each round feeds the next set of functionality.</p>
     </div>
   </div>
 </section>
@@ -117,26 +126,23 @@
 
     <div class="cs-block">
       <h3>One continuous journey</h3>
-      <p>A chat widget dropped into the corner would have left the broken journey intact underneath it, so the assistant is native to the portal instead: describe the problem, troubleshoot with what comes back, open an inquiry from the same conversation with the context already attached. I worked in rounds, building each version into a clickable prototype so it could be judged as a real experience rather than a static screen.</p>
-      <div class="media-placeholder">
-        <span class="tag">Add screenshot</span><br>
-        Two or three design iterations side by side, showing what changed and why
-      </div>
+      <p>A chat widget in the corner would have left the broken journey intact underneath it, so the assistant is native to the portal instead: describe the problem, troubleshoot with what comes back, open an inquiry from the same conversation with the context already attached. I worked in rounds, building each version into a clickable prototype so it could be judged as an experience rather than a static screen.</p>
+      <!-- Worth adding: two or three design iterations side by side. -->
     </div>
 
     <div class="cs-block">
       <h3>An assistant that knows the client</h3>
-      <p>We partnered with Sierra to build the assistant, giving it the client's details so it could help someone troubleshoot rather than return the same generic documentation. It answers against the products a client licenses and the state of their account, and it reads each user's permissions: it won't offer to open an inquiry for someone with no rights to create one, or reference an invoice they can't see.</p>
+      <p>We partnered with Sierra and gave the assistant the client's details, so it troubleshoots instead of returning generic documentation. It answers against the products a client licenses and the state of their account, and it reads each user's permissions: it won't offer to open an inquiry for someone with no rights to create one, or reference an invoice they can't see.</p>
     </div>
 
     <div class="cs-block">
       <h3>Designing for every screen</h3>
-      <p>Clients open the portal from a desk and from a phone between meetings, so the chat panel, the returned articles, and the inquiry form all had to reflow across desktop, tablet, and mobile rather than assume a full-width layout.</p>
+      <p>Clients open the portal from a desk and from a phone between meetings, so the chat panel, the returned articles and the inquiry form all reflow across desktop, tablet and mobile.</p>
     </div>
 
     <div class="cs-block">
       <h3>Writing it down so it could be built</h3>
-      <p>I documented 40+ conversational use cases and their edge cases, each with acceptance criteria: what happens when the assistant doesn't have enough data, when a question is out of scope, and when documentation can't resolve it and an inquiry is the right next step.</p>
+      <p>I documented 40+ conversational use cases and their edge cases with acceptance criteria: what happens when the assistant doesn't have enough data, when a question is out of scope, and when documentation can't resolve it and an inquiry is the right next step.</p>
     </div>
   </div>
 </section>
@@ -144,7 +150,7 @@
 <section class="cs-section">
   <div class="wrap">
     <p class="num">05</p>
-    <h2>Collaboration &amp; stakeholders</h2>
+    <h2>Collaboration and stakeholders</h2>
     <p>Several groups had to agree on the same constraints: Sierra on what the assistant should do and with which client data, engineering on what was buildable, the knowledge-platform team on which content gaps to fill, and the owners of account and permissions data on exactly what could be exposed and to whom. Re-aligning that every time a feedback session surfaced something new was most of the day-to-day work.</p>
   </div>
 </section>
@@ -160,17 +166,17 @@
       </div>
       <div class="stat">
         <span class="num-big">40+</span>
-        <span class="label">conversational use cases built and documented</span>
+        <span class="label">use cases built and documented</span>
       </div>
     </div>
-    <p>Pilot results are still pending. The feedback so far points one way on the core case: for a client who is already trying to solve something themselves, the assistant is powerful, because troubleshooting is exactly what it is good at.</p>
+    <p>Pilot results are still pending. The feedback so far points one way on the core case: for a client already trying to solve something themselves, the assistant is powerful, because troubleshooting is exactly what it is good at.</p>
 
     <div class="cs-block">
       <h3>Where it adds friction instead of removing it</h3>
-      <p>It does not fit every path equally, and two cases came back consistently.</p>
+      <p>Two cases came back consistently.</p>
       <ul>
         <li>The client was never trying to self-serve. They arrived to raise an inquiry, and a conversation now sits between them and the thing they came to do.</li>
-        <li>The request is routine and needs no troubleshooting at all. Describing it in a chat is slower than the form would have been.</li>
+        <li>The request is routine and needs no troubleshooting. Describing it in a chat is slower than the form would have been.</li>
       </ul>
       <p>In both, chat adds a step rather than removing one, which is the opposite of what the redesign set out to do. That is the problem I am working on now: keep the conversational path for the people it genuinely helps, and get out of the way for the people it doesn't.</p>
     </div>
@@ -182,7 +188,7 @@
   <div class="wrap">
     <p class="num">07</p>
     <h2>Prototype</h2>
-    <p>The prototype I designed and built, covering the landing dashboard, AI chat, recommended resolution, related knowledge articles, and creating an inquiry with the conversation context carried over.</p>
+    <p>The prototype I designed and built: landing dashboard, AI chat, recommended resolution, related knowledge articles, and creating an inquiry with the conversation context carried over.</p>
     <div class="btn-row">
       <a class="btn" href="prototypes/ask360-portal.html" target="_blank" rel="noopener">Open interactive prototype &rarr;</a>
     </div>

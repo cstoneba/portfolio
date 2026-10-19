@@ -15,10 +15,19 @@ Static site, no build step. Deploy directly with GitHub Pages (Settings → Page
 
 ## To finish
 
-The Ask 360 case study still has inline placeholders (dashed boxes marked "Add screenshot" / "Add detail"); search `work/ask360.html` for `media-placeholder`. The LineLeap case study has none left.
+No placeholders remain anywhere on the site. Both case studies open with a
+`cs-tldr` skim block (the brief / what I did / where it stands) and are written
+to be scanned: bold lead-ins, short blocks, bullets over prose. Keep that.
 
-Still wanted for LineLeap: screenshots of the shipped post flow (status, photo, share) and the competitive analysis of event and ticketing apps.
+Still wanted: screenshots of the LineLeap post flow and the competitive analysis
+of event and ticketing apps (sent as chat images, never as files). Ask 360 would
+take two or three design iterations side by side, and an affinity or journey map
+from the interview round.
 
-The LineLeap page is written to be skimmed: bold lead-ins, short blocks, bullets over prose. Keep it that way when adding to it.
+Figure conventions: `.cs-artifact` is a padded white card for flat exports,
+`.cs-slide` is a bordered clip for deck slides that carry their own background,
+`.browser-frame` is for product screenshots.
 
-Asset versions are cache-busted with `?v=N` on `css/style.css` and `js/reveal.js`. Bump N in every HTML file whenever either one changes, or returning visitors keep the old copy.
+Asset versions are cache-busted with `?v=N` on `css/style.css` and `js/reveal.js`.
+Bump N in every HTML file whenever either one changes, or returning visitors keep
+the old copy.
