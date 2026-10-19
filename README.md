@@ -19,4 +19,6 @@ The Ask 360 case study still has inline placeholders (dashed boxes marked "Add s
 
 Still wanted for LineLeap: screenshots of the shipped post flow (status, photo, share) and the competitive analysis of event and ticketing apps.
 
+The LineLeap page is written to be skimmed: bold lead-ins, short blocks, bullets over prose. Keep it that way when adding to it.
+
 Asset versions are cache-busted with `?v=N` on `css/style.css` and `js/reveal.js`. Bump N in every HTML file whenever either one changes, or returning visitors keep the old copy.
