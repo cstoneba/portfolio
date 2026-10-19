@@ -543,6 +543,18 @@ h1, h2, h3 { font-family: var(--font-display); }
 
 .stat .label { font-size: 13px; color: var(--ink-muted); }
 
+.cs-figure {
+  margin: 22px 0 28px;
+}
+
+.cs-figure figcaption {
+  margin-top: 11px;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--ink-muted);
+  max-width: 62ch;
+}
+
 .media-placeholder {
   border: 1.5px dashed var(--line);
   border-radius: 16px;
