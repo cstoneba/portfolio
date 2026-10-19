@@ -19,14 +19,14 @@ No placeholders remain anywhere on the site. Both case studies open with a
 `cs-tldr` skim block (the brief / what I did / where it stands) and are written
 to be scanned: bold lead-ins, short blocks, bullets over prose. Keep that.
 
-Still wanted: screenshots of the LineLeap post flow and the competitive analysis
-of event and ticketing apps (sent as chat images, never as files). Ask 360 would
+Still wanted: the competitive analysis of event and ticketing apps. Ask 360 would
 take two or three design iterations side by side, and an affinity or journey map
 from the interview round.
 
 Figure conventions: `.cs-artifact` is a padded white card for flat exports,
 `.cs-slide` is a bordered clip for deck slides that carry their own background,
-`.browser-frame` is for product screenshots.
+`.cs-phones` is a wrapping row of phone screenshots (min 150px so they never
+shrink to illegible), `.browser-frame` is for desktop product screenshots.
 
 Asset versions are cache-busted with `?v=N` on `css/style.css` and `js/reveal.js`.
 Bump N in every HTML file whenever either one changes, or returning visitors keep

@@ -634,6 +634,7 @@ h1, h2, h3 { font-family: var(--font-display); }
 
 .cs-phones .cs-phone {
   flex: 0 1 230px;
+  min-width: 150px;
   border: 1.5px solid var(--line);
   border-radius: 18px;
   overflow: hidden;
