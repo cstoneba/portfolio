@@ -15,6 +15,8 @@ Static site, no build step. Deploy directly with GitHub Pages (Settings → Page
 
 ## To finish
 
-Both case studies have inline placeholders (dashed boxes, marked "Add screenshot" / "Add detail") where a specific artifact would strengthen the story. Search each `work/*.html` file for `media-placeholder` to find them. The LineLeap card on the home page also still uses a `visual-placeholder` instead of a screenshot of the shipped feature.
+The Ask 360 case study still has inline placeholders (dashed boxes marked "Add screenshot" / "Add detail"); search `work/ask360.html` for `media-placeholder`. The LineLeap case study has none left.
+
+Still wanted for LineLeap: screenshots of the shipped post flow (status, photo, share) and the competitive analysis of event and ticketing apps.
 
 Asset versions are cache-busted with `?v=N` on `css/style.css` and `js/reveal.js`. Bump N in every HTML file whenever either one changes, or returning visitors keep the old copy.

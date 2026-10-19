@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Deciding What to Build in LineLeap Social | Casey Stoneback</title>
-<link rel="stylesheet" href="../css/style.css?v=19">
+<link rel="stylesheet" href="../css/style.css?v=20">
 </head>
 <body>
 
@@ -23,7 +23,7 @@
   <div class="wrap">
     <a class="back-link" href="../index.html#work">&larr; All work</a>
     <h1>Deciding What to Build in LineLeap Social</h1>
-    <p class="summary">LineLeap had business goals riding on a social feature and a long list of candidate directions. Four rounds of research, 55 interviews and 400+ survey responses, to work out which ones users would actually engage with and which ones to drop.</p>
+    <p class="summary">LineLeap had business goals riding on a social feature and a long list of candidate directions. Four rounds of research to work out which ones users would actually engage with, and to say plainly when the answer was that they wouldn't.</p>
     <div class="tag-row">
       <span class="tag">User research</span>
       <span class="tag">Synthesis</span>
@@ -55,12 +55,13 @@
   <div class="wrap">
     <p class="num">01</p>
     <h2>The challenge</h2>
-    <p>LineLeap was known for one thing: skipping the line at a bar. The company wanted to expand into a social platform, and it had business OKRs riding on engagement with it. The question was never whether to build social features. It was which ones, and in which direction.</p>
-    <p>The problem statement I worked from:</p>
+    <p>LineLeap was known for one thing: skipping the line at a bar. The company wanted to expand into a social platform, and it had business OKRs riding on engagement with it. The question was never whether to build social features. It was which ones.</p>
+    <p>The problem statement I started from:</p>
     <div class="cs-quote">
       <p>How can LineLeap increase engagement through social features to attain its business OKRs?</p>
     </div>
-    <p>That meant answering to the business goal and to what people actually want out of a night out, at the same time. A concept that only satisfied one side of that wasn't worth building, and most of the work was figuring out which concepts satisfied both.</p>
+    <p>That is a business question, and it isn't testable as written. By the round documented here it had sharpened into one I could actually run research against: how can LineLeap better facilitate interactions between users and their friends, and amplify the fun they are already having, <strong>in order to build posting habits that are not dependent on rewards</strong>.</p>
+    <p>The last clause is the whole problem. People were posting. They were posting because they were paid to.</p>
   </div>
 </section>
 
@@ -92,6 +93,7 @@
         <span class="label">survey responses</span>
       </div>
     </div>
+    <p>Those are the totals across all four rounds. The round this case study draws on was 184 survey respondents and 7 interviews.</p>
 
     <div class="cs-block">
       <h3>Segmenting by behavior instead of self-report</h3>
@@ -108,6 +110,16 @@
         <li><strong>Competitions.</strong> Who people would compete against, over what, for what prize, and how publicly.</li>
       </ul>
     </div>
+
+    <div class="cs-block">
+      <h3>What this research could not tell us</h3>
+      <p>I put the limitations in the report itself rather than in an appendix, because one of them bears directly on the headline finding.</p>
+      <ul>
+        <li><strong>Recruiting bias.</strong> We recruited from people who had used the feature and paid them in LineLeap credit. That sample is very likely to over-represent people motivated by rewards, which is exactly the variable the research was about.</li>
+        <li><strong>Sample composition.</strong> Every interview participant in this round was a woman.</li>
+        <li><strong>Hypotheticals.</strong> A lot of the questions asked people to predict their own behavior in a situation they weren't in, and people are bad at that. It is part of why I leaned on observed posting behavior for the segmentation instead of trusting self-report.</li>
+      </ul>
+    </div>
   </div>
 </section>
 
@@ -115,48 +127,74 @@
   <div class="wrap">
     <p class="num">04</p>
     <h2>What we learned</h2>
-    <p>Four themes, in the form they went to stakeholders in.</p>
+    <p>The finding the whole round turned on: <strong>users are producing content, but almost nobody is consuming it.</strong> LineLeap had successfully paid people to post. What it had not done was make a feed anyone went out of their way to look at. Users described the social feature as the "cherry on top" of the app, a bonus rather than the reason they opened it, and the content being produced was not distinctive enough to pull anyone in.</p>
 
     <div class="cs-block">
-      <h3>1. Rewards were the engine, and almost nobody understood them</h3>
-      <p>People knew what points were good for (cover, bar merch, $10 in LineLeap credit) but about half couldn't say how they were earning them, half didn't know they auto-earn after redeeming a pass, and many had never heard of the 2x promo running at the time. The single biggest driver of engagement was a system users could not describe back to us, which made rewards a comprehension problem before a generosity problem. The instinct in the room had been to add more of them.</p>
+      <h3>We are asking for attention at the worst moment of the night</h3>
+      <p>Going out is chaotic before, during and after. People are drinking, talking to the friends they came with, and frequently on bad reception. LineLeap had bought production with rewards, but consumption competes against the entire night, and most people said they only open the social feature while at the bar at all.</p>
+      <p>This reframed the brief. Rather than asking users to work harder at a feed, repackage what the app already knows: LineLeap can tell someone where their friends are from its own data instead of waiting for those friends to post it.</p>
     </div>
 
     <div class="cs-block">
-      <h3>2. Who is in the feed matters more than how many</h3>
-      <p>The assumption going in was that an empty friends feed kills posting. The survey was more specific. Most said posting is a fun way to interact with friends and that they'd post more if their friends were active, but only 30 to 35% said they would stop using the feed if their friends didn't, and over 60% didn't care whether their post got views. Roughly 60% wanted the audience to be friends. Audience size barely matters. Audience identity does.</p>
-      <p>Nobody was sure what "public" meant here either. Described as the city or the internet, people hesitated. Described as the other people at the bar with them, the hesitation dropped. Part of the reservation was safety, and verification by school email came up unprompted as the fix. That is the other half of the Group A finding: blank screens were a privacy workaround for a feature whose audience had never been made legible.</p>
-      <p>The same thing held on the consuming side.</p>
+      <h3>Rewards drive production, and almost nobody can explain them</h3>
+      <ul>
+        <li><strong>88.8%</strong> said they post for rewards. Fun came second at 63.7%, and "my friends do it" third at 44.7%.</li>
+        <li>About half couldn't say how they were earning points, and half didn't know they auto-earn after redeeming a pass.</li>
+        <li>Many had never heard of the 2x promo that was running at the time.</li>
+      </ul>
+      <p>Rewards also work on a per-venue basis, which is most of why they read as difficult to attain. So the single biggest driver of engagement was a system users could not describe back to us. That made rewards a comprehension problem before a generosity problem, which mattered because the instinct in the room was to add more of them.</p>
+    </div>
+
+    <div class="cs-block">
+      <h3>Consumption breaks at friend-adding</h3>
+      <p>People said they wanted content from friends, and then rarely saw any, because the friends graph barely exists. Users generally add friends only in the first few minutes after downloading the app. Their contact books don't match the people they actually want to follow. Pending friend requests sit unnoticed.</p>
+      <div class="cs-quote">
+        <p>"I don't think I have friends. When I check there are people who come up, it's from contacts, it's too random of people for me to want to add them."</p>
+        <cite>Interview participant</cite>
+      </div>
+      <p>So the friends feed is empty and the explore feed is too random to hold attention, and the user is left with neither. Which is also why the obvious fix was the wrong one: a user's decision to post is not actually gated on friends looking. Only <strong>18%</strong> agreed they would stop posting if their friends didn't look at the feed, and <strong>57%</strong> disagreed. Audience size barely matters. Audience identity does.</p>
+      <p>The clearest version of what people actually wanted was the peripheral friend:</p>
       <div class="cs-quote">
         <p>"I don't have their phone number, but I might still hang out with them at night and want to see their pictures."</p>
         <cite>Interview participant, on who they want in their feed</cite>
       </div>
-      <p>The peripheral friend came up constantly. People wanted content from people adjacent to them, not strangers in their city and not only their closest friends, and the feed offered one or the other: a friends feed that was empty if you hadn't added anyone, and an explore feed too random to hold attention. Friend discovery mattered more than I expected, and the low-stakes version was already in the product. Tapping a post to see who had given it gems was described as a way to "see whose name I recognize" without the commitment of a follow request. Timing mattered too: a user who adds a lot of friends early has a good feed from day one, and a user who doesn't may never get one.</p>
+      <p>Low-stakes discovery already existed in the product and nobody had noticed it was doing work: tapping a post to see who had given it gems was described as a way to "see whose name I recognize" without the commitment of a follow request.</p>
     </div>
 
     <div class="cs-block">
-      <h3>3. The venue is the loyalty LineLeap already has access to</h3>
-      <p>The clearest signal in the interviews. Students are devoted to their bar. They follow it on Instagram for information that is frequently incomplete or out of date, they value venue merch and venue giveaways well above generic rewards, and venue involvement made them measurably more willing to enter a competition. Knowing the bar endorsed something was itself what made it worth doing. Two directions came out of that:</p>
-      <ul>
-        <li><strong>Personification of the venue.</strong> People wanted to hear from a person at the bar, posting conversationally, not from a brand account. Closer to a thread than a broadcast. Practical information like doors open and doors close was wanted too, partly because it makes bars comparable in one place.</li>
-        <li><strong>Venue-hosted competitions with venue-provided prizes.</strong> The prize mattered less than where it came from.</li>
-      </ul>
+      <h3>Who people will share with varies more than the team assumed</h3>
+      <p>There was no single answer to who the audience should be, which is a problem when the feed only offers one. Mapping each interviewee onto a private-to-open spectrum made that impossible to round off in the readout.</p>
+      <figure class="cs-figure">
+        <div class="cs-artifact">
+          <img src="../assets/images/ll-share-spectrum.webp" alt="A spectrum from more private to more open, with each interviewee placed along it and quoted: from 'just my friends' at the private end to 'with everyone at the bar' at the open end" width="1600" height="652" loading="lazy">
+        </div>
+        <figcaption>Each participant placed on a private-to-open spectrum, in their own words. The participant second from the open end wants to share with everyone, and in the same breath worries that "creepy people might be there."</figcaption>
+      </figure>
+      <p>Nobody was sure what "public" even meant here. Described as the city or the internet, people hesitated. Described as the other people at the bar with them, the hesitation dropped. Part of the reservation was safety, and verification by school email came up unprompted as the fix. That is the other half of the Group A finding: blank screens were a privacy workaround for a feature whose audience had never been made legible.</p>
     </div>
 
     <div class="cs-block">
-      <h3>4. Low stakes and low effort, or it doesn't happen</h3>
-      <p>80% strongly agreed they don't put much thought into the photos they post, and that low bar turned out to be load-bearing. Competitions had to match it: people worried about losing and about spending money, so making clear there was no harm in participating mattered more than the size of the prize. The Halloween costume contest worked because all it took was a photo people were already taking. Coordination while out is hard, which makes prompting a requirement rather than a nice-to-have, and formats had to include a version that worked for one person alone, because head-to-head suits some personalities and deters others.</p>
-      <p>This is also where I flagged a risk against several of the concepts on the table. Anything that spotlights individual posts, leaderboards and featured posts included, risks suppressing exactly the casual posting the feed runs on. People who post without thinking about it stop once a post starts to feel like a performance.</p>
+      <h3>What does work: the status, and the prompt</h3>
+      <p>Two things in the product were genuinely loved, and both were cheap.</p>
+      <p>The first is the status. People called it "the heart of the post," found the pre-written options funny and relatable, and valued that picking one is a low-stakes way to show what you're up to without composing anything. Statuses are also low maintenance on LineLeap's side and can be retuned to pop culture, trends and college sports whenever they go stale.</p>
+      <p>The second is being prompted to take a photo in the moment. <strong>83%</strong> agreed they enjoy posting in real time, and participants kept reaching for BeReal unprompted as the comparison. But enthusiasm for prompting is not uniform, and the objections were specific and fixable rather than general.</p>
+      <figure class="cs-figure">
+        <div class="cs-artifact">
+          <img src="../assets/images/ll-prompt-spectrum.webp" alt="A spectrum from hesitant to big fan on prompted photos, with each interviewee quoted; concerns include the timer being stressful and the bar being empty at check-in, while fans like capturing memories in the moment" width="1500" height="544" loading="lazy">
+        </div>
+        <figcaption>The same treatment for prompted photos. "The timer kinda stresses me out" and "what if the bar is empty when I check in?" are design problems. "I'd love to see what people are doing at the bar throughout the night" is a reason to keep going.</figcaption>
+      </figure>
+      <p>The same low-stakes rule governed competitions. People worried about losing and about spending money, so making clear there was no harm in entering mattered more than the prize. The Halloween costume contest worked because all it took was a photo people were already taking. Coordination while out is hard, which makes prompting a requirement, not a nice-to-have.</p>
+    </div>
+
+    <div class="cs-block">
+      <h3>The venue is the loyalty LineLeap already has access to</h3>
+      <p>Students are devoted to their bar. They follow it on Instagram for information that is frequently incomplete or out of date, they value venue merch and venue giveaways well above generic rewards, and venue involvement made them measurably more willing to enter a competition. Knowing the bar endorsed something was itself what made it worth doing. Two directions came out of that: personification of the venue, meaning a person posting conversationally rather than a brand account, and venue-hosted competitions with venue-provided prizes, where the prize mattered less than where it came from.</p>
     </div>
 
     <div class="cs-block">
       <h3>And none of it generalizes evenly</h3>
       <p>The finding I pushed hardest to get into the report was that a smaller market, defined by how established LineLeap is there rather than by the size of the school, behaves differently from a mature one. Low presence means an empty feed, and an empty feed does not recruit posters, so the same feature produces different results in each place. Giving market context its own section let the business apply different strategies campus by campus, and opened a path to growing through the social feature in markets where bars weren't signed yet.</p>
-    </div>
-
-    <div class="media-placeholder">
-      <span class="tag">Add screenshot</span><br>
-      A page from the survey or interview report, ideally the segment comparison or a persona
     </div>
   </div>
 </section>
@@ -173,10 +211,12 @@
       <li><strong>State a thesis the evidence has to support.</strong> Ours was that what people post on LineLeap is unique, constantly changing, and worth saving. Every survey and interview finding got linked back to it, which made it a test rather than a slogan. A concept that didn't fit had to justify itself.</li>
       <li><strong>Concept cards.</strong> A scrappy long list first, grouped by theme, narrowed to seven or eight polished concepts. Each one traceable to a theme, and through the theme to a user need.</li>
     </ol>
-    <div class="media-placeholder">
-      <span class="tag">Add screenshot</span><br>
-      Two or three concept cards, ideally with the theme each one traces back to visible
-    </div>
+    <figure class="cs-figure">
+      <div class="cs-artifact">
+        <img src="../assets/images/ll-persona-matrix.webp" alt="A two-by-two chart plotting interviewees by desired level of privacy against time of adoption, producing four groups: early and late adopters who are private users, and early and late adopters who are public users" width="970" height="592" loading="lazy">
+      </div>
+      <figcaption>Privacy against time of adoption. Plotting both at once is what separated "will post, wants it private" from "will post, wants it public," which the spectrums on their own couldn't show. The empty quadrant is a finding too.</figcaption>
+    </figure>
   </div>
 </section>
 
@@ -193,9 +233,14 @@
     </ul>
 
     <div class="cs-block">
+      <h3>Reporting a non-result</h3>
+      <p>We had shipped two versions of the post flow and wanted to know which to keep. The survey said 45% to 55%, which is not a preference. Rather than dress that up, the report said there was no overwhelming preference and moved the decision to other grounds, with the verbatims explaining what each flow was actually good at: one let people scroll the status options first, which people found funnier, and the other was faster and produced more genuine pictures.</p>
+    </div>
+
+    <div class="cs-block">
       <h3>A workshop, not a presentation</h3>
       <p>I brought the synthesis to business stakeholders unfinished on purpose. Rather than presenting conclusions, I had them read it, contribute to it, and group the findings with me. We identified the key areas together, treated each area as a customer need, and generated and sharpened feature ideas against those areas, from a rough list down to the polished set of concepts.</p>
-      <p>The reason was practical. Stakeholders who grouped the findings themselves didn't have to be sold on the conclusions afterward, and their business ideas got validated against the research while we were still in the room.</p>
+      <p>The reason was practical. Stakeholders who grouped the findings themselves didn't have to be sold on the conclusions afterward, and the business ideas they arrived at were already validated against the research while we were in the room.</p>
     </div>
   </div>
 </section>
@@ -203,13 +248,28 @@
 <section class="cs-section">
   <div class="wrap">
     <p class="num">07</p>
+    <h2>A second workstream: private events</h2>
+    <p>Alongside the social research I worked on private events, which are events only invited people can see. Almost all of the design work turned out to be in the states around the event rather than the event page itself. Someone can arrive from a web browser or from the app, with the app installed or not, with access or without it, to an event that might be app-only or available on both. I sketched the whole matrix by hand before any of it went near Figma, because the number of combinations was the actual problem to solve.</p>
+    <figure class="cs-figure">
+      <div class="cs-artifact">
+        <img src="../assets/images/ll-event-states.webp" alt="Hand-drawn wireframes on grid paper showing private event access states: mobile web without the app, mobile web with the app installed, web-only events, and an app-only event viewed on desktop" width="1275" height="1673" loading="lazy">
+      </div>
+        <figcaption>Access states for a private event, sketched on grid paper. The margin notes are the useful part: "do we want people to know it's private, or feel special?" is a product question, not a visual one, and the answer changes what the locked screen should say.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="wrap">
+    <p class="num">08</p>
     <h2>Where it landed</h2>
     <p>The research set the direction rather than decorating a decision already made. The concepts that survived were the ones built on the venue relationship and on low-stakes, prompted participation. Direct messaging was deprioritized on the evidence that people already had iMessage and didn't want another inbox while out.</p>
     <ul>
       <li>Rewards were treated as a comprehension problem first. Before adding more of them, the finding stood that users couldn't explain the ones they already had.</li>
+      <li>Friend-adding moved from a sign-up step to an ongoing one, because the research showed the graph is built in the first five minutes or never.</li>
       <li>Concepts that would have spotlighted individual posts were flagged as a risk to the casual posting the feed runs on, which is not the conclusion an engagement target points you toward on its own.</li>
       <li>Market context became a standing section of the reporting, which changed how the business thought about rolling the feature out campus by campus.</li>
-      <li>The pre-launch rounds shaped what shipped. The two post-launch rounds checked whether real behavior matched what the research predicted and fed the next set of concepts, including whether the rewards work reached the users it was aimed at and whether anyone had found value in having friends on the platform.</li>
+      <li>The pre-launch rounds shaped what shipped. The two post-launch rounds checked whether real behavior matched what the research predicted, and fed the next set of concepts.</li>
     </ul>
   </div>
 </section>

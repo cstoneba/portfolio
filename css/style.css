@@ -578,6 +578,23 @@ h1, h2, h3 { font-family: var(--font-display); }
   margin: 22px 0 28px;
 }
 
+/* Research artifacts are flat exports on their own light background, so they
+   need a frame of their own; the browser chrome used for product shots would
+   be a lie about what they are. */
+.cs-artifact {
+  background: var(--bg-raised);
+  border: 1.5px solid var(--line);
+  border-radius: 14px;
+  padding: 14px;
+  display: block;
+}
+
+.cs-artifact img { display: block; width: 100%; height: auto; border-radius: 4px; }
+
+@media (max-width: 620px) {
+  .cs-artifact { padding: 8px; }
+}
+
 .cs-figure figcaption {
   margin-top: 11px;
   font-size: 13.5px;
