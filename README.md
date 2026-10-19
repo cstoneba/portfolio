@@ -7,7 +7,7 @@ Static site, no build step. Deploy directly with GitHub Pages (Settings → Page
 - `index.html`: home
 - `about.html`: bio, experience, resume link
 - `work/ask360.html`, `work/lineleap.html`: case studies
-- `work/prototypes/ask360-portal.html`: interactive prototype of the Ask360 support portal (exported from a design tool; references an `Icons/` folder and `design-tokens.css` that weren't included, so some icons currently show broken. Drop the real asset export alongside this file to fix.)
+- `work/prototypes/ask360-portal.html`: interactive prototype of the Ask 360 support portal (exported from a design tool; references an `Icons/` folder and `design-tokens.css` that weren't included, so some icons currently show broken. Drop the real asset export alongside this file to fix.)
 - `css/style.css`: shared styles
 - `assets/resume/`: resume PDF served for download
 - `assets/images/`: case study screenshots
