@@ -628,6 +628,22 @@ h1, h2, h3 { font-family: var(--font-display); }
 
 .cs-slide img { display: block; width: 100%; height: auto; }
 
+/* Phone screenshots. Sized down hard: at full width a single portrait screen
+   is taller than the finding it illustrates. The row takes up to three. */
+.cs-phones { display: flex; gap: 14px; flex-wrap: wrap; }
+
+.cs-phones .cs-phone {
+  flex: 0 1 230px;
+  border: 1.5px solid var(--line);
+  border-radius: 18px;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.cs-phones .cs-phone img { display: block; width: 100%; height: auto; }
+
+@media (max-width: 620px) { .cs-phones .cs-phone { flex-basis: 150px; } }
+
 @media (max-width: 620px) {
   .cs-artifact { padding: 8px; }
 }
