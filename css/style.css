@@ -446,7 +446,6 @@ h1, h2, h3 { font-family: var(--font-display); }
   gap: 10px;
 }
 
-.site-footer .aside { margin-top: 10px; font-size: 14px; color: var(--ink-faint); }
 .site-footer a { color: var(--ink-muted); text-decoration: none; font-weight: 500; }
 .site-footer a:hover { color: var(--accent-deep); }
 
@@ -676,6 +675,13 @@ h1, h2, h3 { font-family: var(--font-display); }
 .media-placeholder .tag { display: inline-block; margin-bottom: 10px; }
 
 /* About page */
+.about-header .outside-work {
+  margin: 18px 0 0;
+  font-size: 15px;
+  color: var(--ink-muted);
+  max-width: 62ch;
+}
+
 .about-header { padding: 20px 0 8px; }
 
 .about-header h1 {
