@@ -675,13 +675,6 @@ h1, h2, h3 { font-family: var(--font-display); }
 .media-placeholder .tag { display: inline-block; margin-bottom: 10px; }
 
 /* About page */
-.about-header .outside-work {
-  margin: 18px 0 0;
-  font-size: 15px;
-  color: var(--ink-muted);
-  max-width: 62ch;
-}
-
 .about-header { padding: 20px 0 8px; }
 
 .about-header h1 {
