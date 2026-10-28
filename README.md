@@ -37,6 +37,8 @@ Figure conventions: `.cs-artifact` is a padded white card for flat exports,
 `.cs-phones` is a wrapping row of phone screenshots (min 150px so they never
 shrink to illegible), `.browser-frame` is for desktop product screenshots.
 
-Asset versions are cache-busted with `?v=N` on `css/style.css` and `js/reveal.js`.
-Bump N in every HTML file whenever either one changes, or returning visitors keep
-the old copy.
+Assets are cache-busted with `?v=N`: `css/style.css`, `js/reveal.js` and every
+image under `assets/images/`. Bump N across all HTML files whenever any of them
+changes, images included. A replaced image at an unchanged URL is served from
+cache indefinitely, so a re-crop that keeps its filename will not reach anyone
+who has already loaded the page.
