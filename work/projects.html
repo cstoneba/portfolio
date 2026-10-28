@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Projects and Implementations in the Client Portal | Casey Stoneback</title>
-<link rel="stylesheet" href="../css/style.css?v=31">
+<link rel="stylesheet" href="../css/style.css?v=32">
 </head>
 <body>
 
@@ -107,6 +107,19 @@
 <section class="cs-section">
   <div class="wrap">
     <p class="num">05</p>
+    <h2>The hard part: data people can trust</h2>
+    <p>The tool pulls from a lot of upstream systems, so it is only ever as current as they are. If the people who own a source don't keep it updated, the client sees something stale in a place that looks authoritative, which costs more trust than showing nothing would have.</p>
+    <p>Two things run alongside the build, and neither is finished:</p>
+    <ul>
+      <li><strong>Training for the teams who own the upstream data.</strong> Most of the fix is upstream rather than in the interface, so the work is with the people maintaining the sources.</li>
+      <li><strong>Only surfacing data we can stand behind.</strong> Where accuracy isn't dependable yet, it doesn't ship. One wrong project status costs more than a missing one, both with clients and with the internal teams who have to answer for it.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="wrap">
+    <p class="num">06</p>
     <h2>The same idea as Ask 360</h2>
     <p>Both halves of the portal work push the same way: give the client one application instead of several, and carry their context across it instead of making them re-establish it. <a href="ask360.html">Ask 360</a> does that inside a single conversation, so nobody retypes the situation they already described. Projects does it across the portal, so the work a client is in the middle of sits next to the help they need with it.</p>
   </div>
