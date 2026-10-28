@@ -8,7 +8,7 @@ Static site, no build step. Deploy directly with GitHub Pages (Settings → Page
 - `about.html`: bio, experience, resume link
 - `work/ask360.html`, `work/projects.html`, `work/lineleap.html`: case studies
 - `work/prototypes/rack.html`: Rack, a self-contained equipment-aware workout prototype
-- `work/prototypes/ask360-portal.html`: interactive prototype of the Ask 360 support portal, exported from a design tool. It loads 21 files from `Icons/` plus `design-tokens.css`; only 3 icons are present so far, so most icons still render broken. Still needed: Burger, Client Information/bank, Client Information/home, Icon-1, Icon-8, Icon-expand, Icon-resources, chevron-down, close, file-download, general-document, icon-operations, icon-service, print, send, thumb-down, thumb-up, x-copy, new_windows, and design-tokens.css.
+- `work/prototypes/ask360-portal.html`: interactive prototype of the Ask 360 support portal, exported from a design tool. It loads 21 files from `Icons/` plus `design-tokens.css`. The tokens and the AI/attachment icons are in; 18 icons plus `new_windows.svg` are still missing, so the sidebar and several controls render broken. Run the prototype and watch for 404s to see the current list.
 - `css/style.css`: shared styles
 - `assets/resume/`: resume PDF served for download
 - `assets/images/`: case study screenshots

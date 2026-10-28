@@ -1,0 +1,237 @@
+/* ==========================================================================
+   C360 Client Portal — Design Tokens (source of truth)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;1,400;1,600&display=swap');
+
+:root {
+
+  /* ===== MONO ===== */
+  --black: #000000;
+  --white: #FFFFFF;
+
+  /* ===== GREY (text, borders, backgrounds) ===== */
+  --grey-d20: #333333;
+  --grey-d16: #404040;
+  --grey-d12: #474747;
+  --grey-d08: #525252;
+  --grey-d04: #5C5C5C;
+  --grey-n0:  #666666;
+  --grey-l08: #7A7A7A;
+  --grey-l16: #8F8F8F;
+  --grey-l24: #B3B3B3;
+  --grey-l32: #CCCCCC;
+  --grey-l40: #D4D4D4;
+
+  /* ===== LIGHT (light neutral surfaces) ===== */
+  --light-d20: #6E6E86;
+  --light-d16: #9494A7;
+  --light-d12: #9F9FB0;
+  --light-d08: #ABABBA;
+  --light-d04: #B6B6C3;
+  --light-n0:  #C1C1CC;
+  --light-l04: #CCCCD5;
+  --light-l08: #D7D7DE;
+  --light-l12: #E3E3E8;
+  --light-l16: #EEEEF1;
+  --light-l20: #F9F9FA;
+
+  /* ===== DARK (dark neutral surfaces) ===== */
+  --dark-d20: #243240;
+  --dark-d16: #2B3D4D;
+  --dark-d12: #33475A;
+  --dark-d08: #3A5167;
+  --dark-d04: #425C74;
+  --dark-n0:  #496681;
+  --dark-l04: #50708E;
+  --dark-l08: #587B9B;
+  --dark-l12: #6185A6;
+  --dark-l16: #6E8FAD;
+  --dark-l20: #7B99B5;
+
+  /* ===== RED (errors, destructive, critical) ===== */
+  --red-d20: #A81206;
+  --red-d16: #BC1407;
+  --red-d12: #CF1607;
+  --red-d08: #E31808;
+  --red-d04: #F61B09;
+  --red-n0:  #F72D1D;
+  --red-l08: #F85244;
+  --red-l16: #FA766C;
+  --red-l24: #FCB2AB;
+  --red-l32: #FEDEDC;
+  --red-l40: #FEEDEB;
+
+  /* ===== ORANGE (warnings, in-progress) ===== */
+  --orange-d20: #8F6800;
+  --orange-d16: #AD7E00;
+  --orange-d12: #C28D00;
+  --orange-d08: #D69B00;
+  --orange-d04: #EBAA00;
+  --orange-n0:  #FFB900;
+  --orange-l08: #FFC429;
+  --orange-l16: #FFCF52;
+  --orange-l24: #FFDB7A;
+  --orange-l32: #FFE6A3;
+  --orange-l40: #FFF4D6;
+
+  /* ===== GREEN (success, completed, positive) ===== */
+  --green-d20: #3A7F13;
+  --green-d16: #429116;
+  --green-d12: #4AA319;
+  --green-d08: #52B51C;
+  --green-d04: #5AC61E;
+  --green-n0:  #62D821;
+  --green-l08: #79E240;
+  --green-l16: #92E763;
+  --green-l24: #ABED87;
+  --green-l32: #C4F2AA;
+  --green-l40: #E9FAE0;
+
+  /* ===== CYAN (secondary info, tags, highlights) ===== */
+  --cyan-d20: #0F6D7E;
+  --cyan-d16: #117D90;
+  --cyan-d12: #138DA2;
+  --cyan-d08: #169CB5;
+  --cyan-d04: #18ACC7;
+  --cyan-n0:  #1ABCD9;
+  --cyan-l08: #35CCE7;
+  --cyan-l16: #59D5EB;
+  --cyan-l24: #7EDEF0;
+  --cyan-l32: #A2E7F4;
+  --cyan-l40: #D6F5FA;
+
+  /* ===== BLUE (info, links, primary interactive) ===== */
+  --blue-d20: #0852A5;
+  --blue-d16: #095CB8;
+  --blue-d12: #0A66CC;
+  --blue-d08: #0B70DF;
+  --blue-d04: #0C79F3;
+  --blue-n0:  #1F84F4;
+  --blue-l08: #4699F6;
+  --blue-l16: #6DAFF8;
+  --blue-l24: #94C4FA;
+  --blue-l32: #BBD9FC;
+  --blue-l40: #E1EFFE;
+
+  /* ===== FISERV BRANDING (top bar / info bar ONLY) ===== */
+  --fiserv-1: #FF6600;
+  --fiserv-2: #FFE0CC;
+
+  /* ===== AVATAR PALETTE (initials only, white text) ===== */
+  --avatar-cyan:        #4DD0E1;
+  --avatar-lime:        #0BE9A4;
+  --avatar-deep-sky:    #2CA9EA;
+  --avatar-khaki:       #C0CC3D;
+  --avatar-deep-pink:   #FF587A;
+  --avatar-yellow:      #FFBC1F;
+  --avatar-dark-purple: #684FB3;
+  --avatar-magenta:     #BD48ED;
+
+  /* ===== CHART PALETTE (charts only, use in order) ===== */
+  --chart-1:  #5CBAE6;
+  --chart-2:  #BCE05A;
+  --chart-3:  #F66364;
+  --chart-4:  #FCB665;
+  --chart-5:  #D977C4;
+  --chart-6:  #7777D9;
+  --chart-7:  #BF7D69;
+  --chart-8:  #77D97C;
+  --chart-9:  #B3B262;
+  --chart-10: #FFB3B3;
+  --chart-11: #AAEAF2;
+  --chart-12: #AAA3D9;
+  --chart-13: #7C93A6;
+  --chart-14: #806060;
+
+  /* ===== GRADIENTS (hero/decorative only) ===== */
+  --gradient-light:  linear-gradient(135deg, #D7D7DE, #ABABBA);
+  --gradient-dark:   linear-gradient(135deg, #587B9B, #425C74);
+  --gradient-red:    linear-gradient(135deg, #FA766C, #E31808);
+  --gradient-orange: linear-gradient(135deg, #FFCF52, #D69B00);
+  --gradient-green:  linear-gradient(135deg, #80E349, #58C21E);
+  --gradient-cyan:   linear-gradient(135deg, #59D5EB, #1492A6);
+  --gradient-blue:   linear-gradient(135deg, #6DAFF8, #0B70DF);
+
+  /* ===== SEMANTIC NICKNAMES (what Copilot reaches for) ===== */
+  --color-primary:              var(--blue-d04);  /* rest    */
+  --color-primary-hover:        var(--blue-n0);   /* lighten */
+  --color-primary-pressed:      var(--blue-d08);  /* darken  */
+  --color-primary-focus-border: var(--blue-d08);
+  --color-primary-disabled:     var(--blue-l24);
+  --color-link:                 var(--blue-d12);  /* #0A66CC — AA-safe link/text-button color */
+  --color-text-primary:   var(--grey-d20);
+  --color-text-secondary: var(--grey-n0);
+  --color-text-tertiary:  var(--grey-l08);
+  --color-border:         var(--grey-l32);
+  --color-border-light:   var(--grey-l40);
+  --color-border-subtle:  var(--light-l12);  /* #E3E3E8 — card border/divider */
+  --color-border-field:   var(--light-l04);  /* #CCCCD5 — field border */
+  --color-bg-hover:       var(--light-l16);  /* #EEEEF1 */
+  --color-bg-panel:       var(--light-l20);  /* #F9F9FA — panel base behind raised white cards */
+  --color-required:       var(--red-d08);    /* #E31808 — required asterisk (distinct from --color-error) */
+  --color-success:        var(--green-n0);
+  --color-warning:        var(--orange-n0);
+  --color-error:          var(--red-n0);
+
+  /* ===== SPACING (adjust if your design differs) ===== */
+  --spacing-2xs: 2px;
+  --spacing-xs:  4px;
+  --spacing-sm:  8px;
+  --spacing-md:  12px;
+  --spacing-lg:  16px;
+  --spacing-xl:  24px;
+  --spacing-2xl: 32px;
+  --spacing-3xl: 48px;
+
+  /* ===== RADIUS ===== */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+
+  /* ===== SHADOWS ===== */
+  --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.06);
+  --shadow-md: 0 4px 12px rgba(16, 24, 40, 0.08);
+  --shadow-lg: 0 8px 24px rgba(16, 24, 40, 0.12);
+
+  /* ===== TYPOGRAPHY ===== */
+  --font-family: 'Open Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --font-size-h1: 40px;   --line-height-h1: 52px;
+  --font-size-h2: 32px;   --line-height-h2: 40px;
+  --font-size-h3: 24px;   --line-height-h3: 32px;
+  --font-size-h4: 20px;   --line-height-h4: 28px;
+  --font-size-h5: 16px;   --line-height-h5: 24px;
+
+  --font-size-large:  16px;  --line-height-large:  24px;
+  --font-size-normal: 14px;  --line-height-normal: 20px;
+  --font-size-small:  12px;  --line-height-small:  16px;
+  --font-size-tiny:   11px;  --line-height-tiny:   16px;
+
+  --font-weight-regular:  400;
+  --font-weight-semibold: 600;
+}
+
+/* ===== TYPOGRAPHY UTILITY CLASSES ===== */
+.heading-1 { font: var(--font-weight-semibold) var(--font-size-h1)/var(--line-height-h1) var(--font-family); }
+.heading-2 { font: var(--font-weight-semibold) var(--font-size-h2)/var(--line-height-h2) var(--font-family); }
+.heading-3 { font: var(--font-weight-semibold) var(--font-size-h3)/var(--line-height-h3) var(--font-family); }
+.heading-4 { font: var(--font-weight-semibold) var(--font-size-h4)/var(--line-height-h4) var(--font-family); }
+.heading-5 { font: var(--font-weight-semibold) var(--font-size-h5)/var(--line-height-h5) var(--font-family); }
+
+.body-large-semibold  { font: var(--font-weight-semibold) var(--font-size-large)/var(--line-height-large)   var(--font-family); }
+.body-large-regular   { font: var(--font-weight-regular)  var(--font-size-large)/var(--line-height-large)   var(--font-family); }
+.body-normal-semibold { font: var(--font-weight-semibold) var(--font-size-normal)/var(--line-height-normal) var(--font-family); }
+.body-normal-regular  { font: var(--font-weight-regular)  var(--font-size-normal)/var(--line-height-normal) var(--font-family); }
+.body-small-semibold  { font: var(--font-weight-semibold) var(--font-size-small)/var(--line-height-small)   var(--font-family); }
+.body-small-regular   { font: var(--font-weight-regular)  var(--font-size-small)/var(--line-height-small)   var(--font-family); }
+.body-tiny-semibold   { font: var(--font-weight-semibold) var(--font-size-tiny)/var(--line-height-tiny)     var(--font-family); }
+.body-tiny-regular    { font: var(--font-weight-regular)  var(--font-size-tiny)/var(--line-height-tiny)     var(--font-family); }
+
+/* ===== BASELINE ===== */
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-normal);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-primary);
+}
