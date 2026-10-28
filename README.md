@@ -25,6 +25,13 @@ from the interview round. `work/projects.html` has no screenshots at all yet, so
 its home page card uses the `.is-text` single-column format; drop the two-column
 format back in once there is a visual.
 
+The two Ask 360 screenshots were widened by 77px on the right before export.
+The portal has a left sidebar, so the content column's centre is not the
+window's centre, and the ask-anything field read as off-centre in the frame.
+Cropping the left to fix it clipped the Client360 logo, so the right edge
+(flat per band: orange bar, white nav, grey body) was replicated instead. Rebuild
+with the same offset if the source screenshot is ever replaced.
+
 Figure conventions: `.cs-artifact` is a padded white card for flat exports,
 `.cs-slide` is a bordered clip for deck slides that carry their own background,
 `.cs-phones` is a wrapping row of phone screenshots (min 150px so they never
